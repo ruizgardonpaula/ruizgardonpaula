@@ -3,235 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paula Ruiz | Cybersecurity & IA Engineer</title>
+    <title>Paula Ruiz | Portfolio IT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #005fb8; /* Azul tecnológico limpio */
-            --bg: #f8f9fa;
-            --text-dark: #1a1a1a;
-            --text-light: #505050;
-            --white: #ffffff;
-            --border: #e1e4e8;
-            --mono-font: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            --primary: #0070f3; /* Azul eléctrico profesional */
+            --accent: #00dfd8;
+            --bg: #ffffff;
+            --text: #111827;
+            --text-light: #6b7280;
+            --card-bg: #f9fafb;
+            --border: #e5e7eb;
+            --nav-bg: rgba(255, 255, 255, 0.8);
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        
         body {
             background-color: var(--bg);
-            color: var(--text-dark);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
             margin: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-
-        /* HEADER */
-        header {
-            text-align: left;
-            margin-bottom: 60px;
-            border-left: 5px solid var(--primary);
-            padding-left: 30px;
-        }
-        h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
-        .tagline { 
-            font-family: var(--mono-font); 
-            color: var(--primary); 
-            font-size: 1rem; 
-            margin: 10px 0;
-            font-weight: bold;
-        }
-        .contact-bar { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 15px; 
-            margin-top: 20px; 
-            font-size: 0.85rem; 
-            color: var(--text-light);
-        }
-        .contact-bar a { color: var(--text-dark); text-decoration: none; border-bottom: 1px solid var(--border); }
-        .contact-bar a:hover { border-color: var(--primary); color: var(--primary); }
-
-        /* SECCIONES */
-        section { margin-bottom: 50px; }
-        h2 {
-            font-family: var(--mono-font);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary);
+        /* BARRA DE NAVEGACIÓN */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
+            z-index: 1000;
+            padding: 15px 0;
         }
 
-        /* CARDS */
-        .card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-
-        .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-        .job-title { font-weight: 800; font-size: 1.1rem; }
-        .job-date { font-family: var(--mono-font); font-size: 0.8rem; color: var(--primary); }
-        .company { color: var(--text-light); font-weight: 500; display: block; margin-bottom: 10px; }
-
-        ul { padding-left: 20px; margin: 0; color: var(--text-light); font-size: 0.95rem; }
-        li { margin-bottom: 8px; }
-
-        /* SKILLS GRID */
-        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .skill-group h3 { font-size: 0.9rem; margin-bottom: 12px; }
-        .pill {
-            display: inline-block;
-            background: #eef2f7;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin: 0 4px 8px 0;
-            font-family: var(--mono-font);
-            color: #334e68;
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
         }
 
-        /* IDIOMAS & SOFT SKILLS */
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .logo { font-family: 'Fira Code', monospace; font-weight: 800; color: var(--primary); font-size: 1.2rem; }
 
-        footer {
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-light); 
+            font-size: 0.9rem; 
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 140px 20px 80px;
             text-align: center;
-            margin-top: 80px;
-            font-family: var(--mono-font);
-            font-size: 0.75rem;
-            color: var(--text-light);
+            background: radial-gradient(circle at top right, #f0f7ff 0%, #ffffff 50%);
         }
 
-        @media (max-width: 600px) {
-            .info-grid { grid-template-columns: 1fr; }
-            .job-header { flex-direction: column; }
-            h1 { font-size: 1.8rem; }
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin: 0; 
+            letter-spacing: -2px; 
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { color: var(--text-light); font-size: 1.2rem; max-width: 700px; margin: 20px auto; }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        section.show { opacity: 1; transform: translateY(0); }
+
+        h2 { font-family: 'Fira Code', monospace; font-size: 1.5rem; margin-bottom: 40px; display: flex; align-items: center; }
+        h2::after { content: ""; height: 1px; flex: 1; background: var(--border); margin-left: 20px; }
+
+        /* EXPERIENCIA & CARDS */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        .card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,112,243,0.05); }
+
+        .card-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .company { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+        .date { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--text-light); }
+
+        /* SKILLS PILLS */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill { 
+            background: #fff; 
+            border: 1px solid var(--border); 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 0.85rem; 
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pill i { color: var(--primary); font-size: 0.7rem; }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .wsp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+            z-index: 999;
+            transition: transform 0.3s;
+        }
+        .wsp-button:hover { transform: scale(1.1) rotate(10deg); }
+
+        /* FOOTER */
+        footer { padding: 40px; text-align: center; color: var(--text-light); font-family: 'Fira Code', monospace; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* En móvil ocultamos menú para simplificar */
+            .card-header { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <div class="tagline">&lt;INGENIERA_INFORMATICA /&gt;</div>
-        <h1>PAULA RUIZ</h1>
-        <p style="color: var(--text-light); max-width: 600px; margin: 15px 0;">
-            Especialista en <strong>Ciberseguridad, IA y Desarrollo de Software</strong>. 
-            Enfocada en la automatización de la seguridad y el desarrollo de sistemas escalables.
-        </p>
-        <div class="contact-bar">
-            <span><i class="fas fa-map-marker-alt"></i> Sevilla, España</span>
-            <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i> ruizgardonpaula@gmail.com</a>
-            <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <span><i class="fas fa-phone"></i> +34 634 211 691</span>
+<nav>
+    <div class="nav-container">
+        <div class="logo">&lt;PR /&gt;</div>
+        <div class="nav-links">
+            <a href="#experience">Experiencia</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Formación</a>
         </div>
-    </header>
+    </div>
+</nav>
 
+<header class="hero">
+    <h1>PAULA RUIZ</h1>
+    <p>Ingeniera Informática especializada en <strong>Ciberseguridad</strong> e <strong>Inteligencia Artificial</strong>. Transformando datos complejos en sistemas seguros.</p>
+    <div style="margin-top: 30px;">
+        <a href="mailto:ruizgardonpaula@gmail.com" style="text-decoration: none; background: var(--primary); color: white; padding: 12px 25px; border-radius: 8px; font-weight: 600;">Contactar</a>
+    </div>
+</header>
+
+<div class="container">
     <section id="experience">
-        <h2>EXPERIENCIA_PROFESIONAL</h2>
+        <h2>01. Experiencia</h2>
         
         <div class="card">
-            <div class="job-header">
-                <span class="job-title">Analista de Ciberseguridad IT</span>
-                <span class="job-date">Feb 2026 – Presente</span>
+            <div class="card-header">
+                <span class="company">Atlantica Sustainable Infrastructure</span>
+                <span class="date">2026 - Actualidad</span>
             </div>
-            <span class="company">Atlantica Sustainable Infrastructure</span>
-            <ul>
-                <li>Asistencia en la monitorización de alertas y soporte en la respuesta ante incidentes en entornos SOC.</li>
-                <li>Colaboración en la mitigación de Phishing mediante el uso de la herramienta Abnormal Security.</li>
-                <li>Apoyo en la revisión de configuraciones y aplicación de Best Practices de seguridad.</li>
+            <strong>Analista de Ciberseguridad IT</strong>
+            <ul style="margin-top: 15px; padding-left: 20px; color: var(--text-light);">
+                <li>Monitorización de alertas y soporte en respuesta ante incidentes (SOC).</li>
+                <li>Mitigación de Phishing mediante Abnormal Security.</li>
+                <li>Hardening de sistemas y aplicación de Best Practices.</li>
             </ul>
         </div>
 
         <div class="card">
-            <div class="job-header">
-                <span class="job-title">Consultora de Seguridad</span>
-                <span class="job-date">Mar 2025 – Sep 2025</span>
+            <div class="card-header">
+                <span class="company">Avanade Spain S.L.U.</span>
+                <span class="date">2025</span>
             </div>
-            <span class="company">Avanade Spain S.L.U.</span>
-            <ul>
-                <li>Apoyo en la gestión de IAM en entornos Microsoft y Azure, asistiendo en la administración de identidades y privilegios.</li>
-                <li>Colaboración en la aplicación de System Hardening y políticas de seguridad para reducir la superficie de ataque.</li>
-                <li>Asistencia en la redacción de documentación técnica de cumplimiento.</li>
-                <li>Participación de apoyo en proyectos de infraestructura y gobernanza de identidad.</li>
+            <strong>Consultora de Seguridad</strong>
+            <ul style="margin-top: 15px; padding-left: 20px; color: var(--text-light);">
+                <li>Gestión de IAM en entornos Microsoft y Azure.</li>
+                <li>Hardening de sistemas para reducción de superficie de ataque.</li>
+                <li>Documentación técnica de cumplimiento y gobernanza de identidad.</li>
             </ul>
         </div>
     </section>
 
     <section id="skills">
-        <h2>APTITUDES_TÉCNICAS</h2>
-        <div class="skills-container">
-            <div class="skill-group">
-                <h3>Ciberseguridad</h3>
-                <span class="pill">Azure AD</span> <span class="pill">IAM</span> 
-                <span class="pill">Hardening</span> <span class="pill">Burp Suite</span>
-                <span class="pill">OWASP</span> <span class="pill">CVSS</span>
+        <h2>02. Aptitudes Técnicas</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+                <h4 style="font-size: 0.9rem; color: var(--text-light); text-transform: uppercase;">Ciberseguridad</h4>
+                <div class="skills-grid">
+                    <span class="pill"><i class="fas fa-shield-alt"></i> Azure AD</span>
+                    <span class="pill"><i class="fas fa-lock"></i> IAM</span>
+                    <span class="pill"><i class="fas fa-user-secret"></i> OWASP</span>
+                    <span class="pill"><i class="fas fa-search"></i> Nmap</span>
+                </div>
             </div>
-            <div class="skill-group">
-                <h3>IA & Datos</h3>
-                <span class="pill">Python</span> <span class="pill">Scikit-learn</span> 
-                <span class="pill">XGBoost</span> <span class="pill">Deep Learning</span>
-            </div>
-            <div class="skill-group">
-                <h3>Desarrollo</h3>
-                <span class="pill">Java</span> <span class="pill">React Native</span> 
-                <span class="pill">JavaScript</span> <span class="pill">Git/GitHub</span>
+            <div>
+                <h4 style="font-size: 0.9rem; color: var(--text-light); text-transform: uppercase;">IA & Desarrollo</h4>
+                <div class="skills-grid">
+                    <span class="pill"><i class="fas fa-brain"></i> Machine Learning</span>
+                    <span class="pill"><i class="fas fa-code"></i> Python</span>
+                    <span class="pill"><i class="fas fa-mobile-alt"></i> React Native</span>
+                    <span class="pill"><i class="fab fa-git-alt"></i> Git</span>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="education">
-        <h2>FORMACIÓN_Y_CERTIFICADOS</h2>
+        <h2>03. Formación</h2>
         <div class="card">
-            <div class="job-header">
-                <span class="job-title">Máster en Ciberseguridad e IA</span>
-                <span class="job-date">2025 – 2026</span>
+            <div class="card-header">
+                <span class="company">Máster Ciberseguridad e IA</span>
+                <span class="date">2025 - 2026</span>
             </div>
-            <span class="company">CEI – Centro de Estudios e Innovación</span>
+            <span>CEI – Centro de Estudios e Innovación</span>
         </div>
         <div class="card">
-            <div class="job-header">
-                <span class="job-title">Grado en Ingeniería Informática</span>
-                <span class="job-date">2021 – 2025</span>
+            <div class="card-header">
+                <span class="company">Grado Ingeniería Informática</span>
+                <span class="date">2021 - 2025</span>
             </div>
-            <span class="company">Universidad de Sevilla (Incluye Erasmus en Brno Tech)</span>
-        </div>
-        <div style="margin-top: 20px;">
-            <span class="pill">Google: Foundations of Cybersecurity</span>
-            <span class="pill">Cisco: Introduction to Cybersecurity</span>
-            <span class="pill">Google: Python Essentials 1 & 2</span>
+            <span>Universidad de Sevilla | Brno Tech (Erasmus)</span>
         </div>
     </section>
-
-    <div class="info-grid">
-        <section>
-            <h2>IDIOMAS</h2>
-            <p><strong>Español:</strong> Nativo</p>
-            <p><strong>Inglés:</strong> B2 (Cambridge FCE)</p>
-            <p><strong>Alemán:</strong> Básico (A1/A2)</p>
-        </section>
-        <section>
-            <h2>SOFT_SKILLS</h2>
-            <ul style="padding-left: 0; list-style: none;">
-                <li><i class="fas fa-check" style="color: var(--primary);"></i> Pensamiento Analítico</li>
-                <li><i class="fas fa-check" style="color: var(--primary);"></i> Comunicación Técnica</li>
-                <li><i class="fas fa-check" style="color: var(--primary);"></i> Metodologías Agile</li>
-            </ul>
-        </section>
-    </div>
-
-    <footer>
-        <p>TERMINAL_LOG: Paula Ruiz / 2026 / v2.0-clean-style</p>
-    </footer>
 </div>
+
+<a href="https://wa.me/34634211691" class="wsp-button" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+    <p>Diseñado con <i class="fas fa-heart" style="color: #ff4d4d;"></i> por Paula Ruiz &bull; 2026</p>
+</footer>
+
+<script>
+    // Animación al hacer scroll
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
 
 </body>
 </html>
