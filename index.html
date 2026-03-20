@@ -48,11 +48,12 @@
         .nav-links a { text-decoration: none; color: var(--text-p); font-size: 0.85rem; font-weight: 600; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
 
-        /* HERO - PRESENTACIÓN IMPACTANTE */
+        /* HERO - AJUSTADO PARA EVITAR SUPERPOSICIÓN */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 20px;
+            text-align: center; 
+            padding: 100px 20px 40px 20px; /* Añadido padding arriba para dejar sitio al nav */
             background: radial-gradient(circle at top right, #e0f2fe 0%, #ffffff 60%);
         }
 
@@ -122,6 +123,7 @@
             nav { width: 95%; padding: 10px 20px; }
             .nav-links { display: none; }
             .profile-photo { width: 140px; height: 140px; }
+            .hero { padding-top: 120px; } /* Más espacio en móvil */
         }
     </style>
 </head>
