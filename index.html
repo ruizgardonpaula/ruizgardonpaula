@@ -34,7 +34,7 @@
             position: fixed;
             top: 20px; left: 50%;
             transform: translateX(-50%);
-            width: 90%; max-width: 800px;
+            width: 90%; max-width: 900px;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -44,11 +44,15 @@
             display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
-        .nav-links { display: flex; gap: 25px; }
+        .nav-links { display: flex; gap: 20px; }
         .nav-links a { text-decoration: none; color: var(--text-p); font-size: 0.85rem; font-weight: 600; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
 
-        /* HERO - AJUSTADO PARA EVITAR SUPERPOSICIÓN */
+        .lang-control { display: flex; gap: 5px; margin-right: 15px; border-right: 1px solid var(--border); padding-right: 15px; }
+        .lang-btn { background: none; border: none; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 0.7rem; font-weight: 800; color: var(--text-p); opacity: 0.5; transition: 0.3s; }
+        .lang-btn.active { color: var(--primary); opacity: 1; }
+
+        /* HERO */
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -115,7 +119,7 @@
             .bento-grid { grid-template-columns: 1fr; }
             .side-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 3.5rem; }
-            nav { width: 95%; padding: 10px 20px; }
+            nav { width: 95%; padding: 10px 15px; }
             .nav-links { display: none; }
             .profile-photo { width: 140px; height: 140px; }
             .hero { padding-top: 120px; }
@@ -127,12 +131,18 @@
 <nav>
     <div class="nav-logo" style="font-weight: 800; font-family: 'JetBrains Mono';">PR.</div>
     <div class="nav-links">
-        <a href="#perfil">Perfil</a>
-        <a href="#experiencia">Trayectoria</a>
-        <a href="#skills">Tecnologías</a>
-        <a href="#educacion">Formación</a>
+        <a href="#perfil" data-section="nav1">Perfil</a>
+        <a href="#experiencia" data-section="nav2">Trayectoria</a>
+        <a href="#skills" data-section="nav3">Tecnologías</a>
+        <a href="#educacion" data-section="nav4">Formación</a>
     </div>
-    <a href="mailto:ruizgardonpaula@gmail.com" style="background: var(--primary); color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 700;">Email</a>
+    <div style="display: flex; align-items: center;">
+        <div class="lang-control">
+            <button class="lang-btn active" onclick="setLanguage('es')">ES</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        </div>
+        <a href="mailto:ruizgardonpaula@gmail.com" style="background: var(--primary); color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 700;">Email</a>
+    </div>
 </nav>
 
 <header class="hero">
@@ -140,9 +150,9 @@
         <img src="perfil.jpg" alt="Paula Ruiz" class="profile-photo">
     </div>
 
-    <span class="section-label">Cybersecurity, IA & Software Engineer</span>
-    <h1>Paula <span>Ruiz</span></h1>
-    <p><strong>Sólida base académica</strong> en IA y Software. <br>
+    <span class="section-label" data-section="hero_tag">Cybersecurity, IA & Software Engineer</span>
+    <h1 data-section="hero_h1">Paula <span>Ruiz</span></h1>
+    <p data-section="hero_p"><strong>Sólida base académica</strong> en IA y Software. <br>
         <strong>Experiencia operativa</strong> en Ciberseguridad corporativa.</p>
     <div style="margin-top: 40px; display: flex; gap: 15px;">
         <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank" style="color: var(--dark); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
@@ -153,31 +163,31 @@
 <div class="container" id="perfil">
     <div class="side-grid">
         <div>
-            <span class="section-label">01. Introducción</span>
-            <h2>Perfil Profesional</h2>
+            <span class="section-label" data-section="label1">01. Introducción</span>
+            <h2 data-section="h2_1">Perfil Profesional</h2>
         </div>
         <div>
-            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-p);">
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-p);" data-section="p_intro">
                 Ingeniera Informática interesada en la intersección de la <strong>IA</strong> y la <strong>Ciberseguridad</strong>. 
-        Cuento con una base académica centrada en el desarrollo de software y el análisis de datos, 
-        complementada con experiencia operativa en entornos de soporte y monitorización (SOC/IAM).
-        <br><br>
-        En constante aprendizaje para aplicar soluciones técnicas eficientes en entornos profesionales.
-    </p>
+                Cuento con una base académica centrada en el desarrollo de software y el análisis de datos, 
+                complementada con experiencia operativa en entornos de soporte y monitorización (SOC/IAM).
+                <br><br>
+                En constante aprendizaje para aplicar soluciones técnicas eficientes en entornos profesionales.
+            </p>
         </div>
     </div>
 </div>
 
 <div class="container" id="experiencia" style="background: var(--surface); border-radius: 50px; border: 1px solid var(--border);">
-    <span class="section-label">02. Experiencia</span>
-    <h2>Trayectoria Operativa</h2>
+    <span class="section-label" data-section="label2">02. Experiencia</span>
+    <h2 data-section="h2_2">Trayectoria Operativa</h2>
     
     <div class="storyline">
         <div class="story-item">
-            <span class="date">Febrero 2026 — Presente</span>
-            <h4>Analista de Ciberseguridad IT</h4>
+            <span class="date" data-section="date1">Febrero 2026 — Presente</span>
+            <h4 data-section="job1_title">Analista de Ciberseguridad IT</h4>
             <span class="company">Atlantica Sustainable Infrastructure</span>
-            <ul>
+            <ul data-section="job1_list">
                 <li><strong>Monitorización:</strong> Asistencia en la monitorización de alertas y soporte en la respuesta ante incidentes.</li>
                 <li><strong>Defensa Anti-Phishing:</strong> Colaboración en la mitigación de Phishing.</li>
                 <li><strong>Gobernanza:</strong> Apoyo en la revisión de configuraciones y aplicación de Best Practices de seguridad.</li>
@@ -185,10 +195,10 @@
         </div>
 
         <div class="story-item">
-            <span class="date">Marzo 2025 — Septiembre 2025</span>
-            <h4>Consultora de Seguridad</h4>
+            <span class="date" data-section="date2">Marzo 2025 — Septiembre 2025</span>
+            <h4 data-section="job2_title">Consultora de Seguridad</h4>
             <span class="company">Avanade Spain S.L.U.</span>
-            <ul>
+            <ul data-section="job2_list">
                 <li><strong>Identidad (IAM):</strong> Apoyo en la gestión de IAM en entornos Microsoft y Azure AD.</li>
                 <li><strong>Hardening:</strong> Colaboración en la aplicación de System Hardening y políticas de seguridad.</li>
                 <li><strong>Cumplimiento:</strong> Redacción de documentación técnica y soporte en gobernanza de identidad.</li>
@@ -198,12 +208,12 @@
 </div>
 
 <div class="container" id="skills">
-    <span class="section-label">03. Stack Tecnológico</span>
-    <h2>Aptitudes Técnicas</h2>
+    <span class="section-label" data-section="label3">03. Stack Tecnológico</span>
+    <h2 data-section="h2_3">Aptitudes Técnicas</h2>
     
     <div class="bento-grid">
         <div class="bento-card" style="grid-column: span 2;">
-            <h3><i class="fas fa-shield-halved"></i> Ciberseguridad</h3>
+            <h3 data-section="skill_ciber"><i class="fas fa-shield-halved"></i> Ciberseguridad</h3>
             <div class="tag-container">
                 <span class="tag">Microsoft 365 Security</span> <span class="tag">Azure AD</span> <span class="tag">IAM</span>
                 <span class="tag">System Hardening</span> <span class="tag">Burp Suite</span> <span class="tag">Nmap</span>
@@ -211,21 +221,21 @@
             </div>
         </div>
         <div class="bento-card" style="grid-column: span 2;">
-            <h3><i class="fas fa-brain"></i> IA & Data Science</h3>
+            <h3 data-section="skill_ia"><i class="fas fa-brain"></i> IA & Data Science</h3>
             <div class="tag-container">
                 <span class="tag">Python</span> <span class="tag">Pandas/NumPy</span> <span class="tag">Scikit-learn</span>
                 <span class="tag">XGBoost</span> <span class="tag">Machine Learning</span> <span class="tag">Deep Learning</span>
             </div>
         </div>
         <div class="bento-card" style="grid-column: span 2;">
-            <h3><i class="fas fa-laptop-code"></i> Desarrollo</h3>
+            <h3 data-section="skill_dev"><i class="fas fa-laptop-code"></i> Desarrollo</h3>
             <div class="tag-container">
                 <span class="tag">Java</span> <span class="tag">React Native</span> <span class="tag">JavaScript</span>
                 <span class="tag">HTML5/CSS3</span> <span class="tag">Expo</span> <span class="tag">Git/GitHub</span>
             </div>
         </div>
         <div class="bento-card" style="grid-column: span 2;">
-            <h3><i class="fas fa-server"></i> Sistemas</h3>
+            <h3 data-section="skill_sys"><i class="fas fa-server"></i> Sistemas</h3>
             <div class="tag-container">
                 <span class="tag">Linux</span> <span class="tag">Windows Server</span> <span class="tag">macOS</span>
                 <span class="tag">VirtualBox</span> <span class="tag">Auditoría Técnica</span>
@@ -235,24 +245,24 @@
 </div>
 
 <div class="container" id="educacion">
-    <span class="section-label">04. Formación</span>
-    <h2>Preparación Académica</h2>
+    <span class="section-label" data-section="label4">04. Formación</span>
+    <h2 data-section="h2_4">Preparación Académica</h2>
     
     <div class="side-grid">
         <div class="bento-card">
             <span class="date">2025-2026</span>
-            <h4>Máster Ciberseguridad e IA</h4>
+            <h4 data-section="edu1_title">Máster Ciberseguridad e IA</h4>
             <p>CEI – Centro de Estudios e Innovación</p>
         </div>
         <div class="bento-card">
             <span class="date">2021-2025</span>
-            <h4>Grado Ingeniería Informática (TI)</h4>
+            <h4 data-section="edu2_title">Grado Ingeniería Informática (TI)</h4>
             <p>Universidad de Sevilla</p>
-            <p style="font-size: 0.8rem; color: var(--primary);">Incluye Erasmus+ en Brno Tech, Rep. Checa</p>
+            <p style="font-size: 0.8rem; color: var(--primary);" data-section="edu2_sub">Incluye Erasmus+ en Brno Tech, Rep. Checa</p>
         </div>
     </div>
 
-    <h3 style="margin-top: 40px;">Certificaciones & Idiomas</h3>
+    <h3 style="margin-top: 40px;" data-section="cert_title">Certificaciones & Idiomas</h3>
     <div class="side-grid">
         <div class="tag-container">
             <span class="tag">Google: Foundations of Cybersecurity</span>
@@ -260,35 +270,110 @@
             <span class="tag">Cisco: Introduction to Cybersecurity</span>
             <span class="tag">Escuela de Empresa: Nanotraining IA</span>
         </div>
-        <div>
-            <div>Inglés (B2 - Cambridge) <div class="progress-bar"><div class="progress-inner" style="width: 75%;"></div></div></div>
-            <div style="margin-top: 15px;">Alemán (A1/A2) <div class="progress-bar"><div class="progress-inner" style="width: 30%;"></div></div></div>
+        <div id="lang-section">
+            <div><span data-section="lang_es">Español</span> (<span data-section="lang_native">Nativo</span>) <div class="progress-bar"><div class="progress-inner" style="width: 100%;"></div></div></div>
+            <div style="margin-top: 15px;"><span data-section="lang_en">Inglés</span> (B2 - Cambridge) <div class="progress-bar"><div class="progress-inner" style="width: 75%;"></div></div></div>
+            <div style="margin-top: 15px;"><span data-section="lang_de">Alemán</span> (A1/A2) <div class="progress-bar"><div class="progress-inner" style="width: 30%;"></div></div></div>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <span class="section-label">05. Habilidades</span>
-    <h2>Soft Skills</h2>
+    <span class="section-label" data-section="label5">05. Habilidades</span>
+    <h2 data-section="h2_5">Soft Skills</h2>
     <div class="tag-container" style="margin-top: 20px;">
-        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);">Pensamiento Analítico</span>
-        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);">Resolución de Problemas Complejos</span>
-        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);">Comunicación Técnica</span>
-        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);">Adaptabilidad Agile</span>
-        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);">Proactividad</span>
+        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);" data-section="soft1">Pensamiento Analítico</span>
+        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);" data-section="soft2">Resolución de Problemas</span>
+        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);" data-section="soft3">Comunicación Técnica</span>
+        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);" data-section="soft4">Adaptabilidad Agile</span>
+        <span class="tag" style="padding: 15px 25px; font-size: 1rem; background: var(--surface);" data-section="soft5">Proactividad</span>
     </div>
 </div>
 
 <footer>
     <div class="container">
-        <h2>¿Trabajamos juntos?</h2>
+        <h2 data-section="footer_h2">¿Trabajamos juntos?</h2>
         <p>Sevilla, España | +34 634 211 691</p>
         <p>ruizgardonpaula@gmail.com</p>
-        <div style="margin-top: 40px; font-family: 'JetBrains Mono'; font-size: 0.8rem; opacity: 0.5;">
+        <div style="margin-top: 40px; font-family: 'JetBrains Mono'; font-size: 0.8rem; opacity: 0.5;" data-section="footer_copy">
             Diseñado como Portfolio Interactivo &bull; 2026
         </div>
     </div>
 </footer>
+
+<script>
+    const translations = {
+        es: {
+            nav1: "Perfil", nav2: "Trayectoria", nav3: "Tecnologías", nav4: "Formación",
+            hero_tag: "Cybersecurity, IA & Software Engineer",
+            hero_h1: "Paula <span>Ruiz</span>",
+            hero_p: "<strong>Sólida base académica</strong> en IA y Software. <br> <strong>Experiencia operativa</strong> en Ciberseguridad corporativa.",
+            label1: "01. Introducción", h2_1: "Perfil Profesional",
+            p_intro: "Ingeniera Informática interesada en la intersección de la <strong>IA</strong> y la <strong>Ciberseguridad</strong>. Cuento con una base académica centrada en el desarrollo de software y el análisis de datos, complementada con experiencia operativa en entornos de soporte y monitorización (SOC/IAM). <br><br> En constante aprendizaje para aplicar soluciones técnicas eficientes en entornos profesionales.",
+            label2: "02. Experiencia", h2_2: "Trayectoria Operativa",
+            date1: "Febrero 2026 — Presente", job1_title: "Analista de Ciberseguridad IT",
+            job1_list: "<li><strong>Monitorización:</strong> Asistencia en la monitorización de alertas y soporte en la respuesta ante incidentes.</li><li><strong>Defensa Anti-Phishing:</strong> Colaboración en la mitigación de Phishing.</li><li><strong>Gobernanza:</strong> Apoyo en la revisión de configuraciones y aplicación de Best Practices de seguridad.</li>",
+            date2: "Marzo 2025 — Septiembre 2025", job2_title: "Consultora de Seguridad",
+            job2_list: "<li><strong>Identidad (IAM):</strong> Apoyo en la gestión de IAM en entornos Microsoft y Azure AD.</li><li><strong>Hardening:</strong> Colaboración en la aplicación de System Hardening y políticas de seguridad.</li><li><strong>Cumplimiento:</strong> Redacción de documentación técnica y soporte en gobernanza de identidad.</li>",
+            label3: "03. Stack Tecnológico", h2_3: "Aptitudes Técnicas",
+            skill_ciber: "<i class='fas fa-shield-halved'></i> Ciberseguridad", skill_ia: "<i class='fas fa-brain'></i> IA & Data Science", skill_dev: "<i class='fas fa-laptop-code'></i> Desarrollo", skill_sys: "<i class='fas fa-server'></i> Sistemas",
+            label4: "04. Formación", h2_4: "Preparación Académica",
+            edu1_title: "Máster Ciberseguridad e IA", edu2_title: "Grado Ingeniería Informática (TI)", edu2_sub: "Incluye Erasmus+ en Brno Tech, Rep. Checa",
+            cert_title: "Certificaciones & Idiomas",
+            lang_es: "Español", lang_en: "Inglés", lang_de: "Alemán", lang_native: "Nativo",
+            label5: "05. Habilidades", h2_5: "Soft Skills",
+            soft1: "Pensamiento Analítico", soft2: "Resolución de Problemas", soft3: "Comunicación Técnica", soft4: "Adaptabilidad Agile", soft5: "Proactividad",
+            footer_h2: "¿Trabajamos juntos?", footer_copy: "Diseñado como Portfolio Interactivo • 2026"
+        },
+        en: {
+            nav1: "Profile", nav2: "Experience", nav3: "Tech Stack", nav4: "Education",
+            hero_tag: "Cybersecurity, AI & Software Engineer",
+            hero_h1: "Paula <span>Ruiz</span>",
+            hero_p: "<strong>Solid academic background</strong> in AI and Software. <br> <strong>Operational experience</strong> in corporate Cybersecurity.",
+            label1: "01. Introduction", h2_1: "Professional Profile",
+            p_intro: "Computer Engineer interested in the intersection of <strong>AI</strong> and <strong>Cybersecurity</strong>. I have an academic background focused on software development and data analysis, complemented by operational experience in support and monitoring environments (SOC/IAM). <br><br> Constantly learning to apply efficient technical solutions in professional environments.",
+            label2: "02. Experience", h2_2: "Operational History",
+            date1: "February 2026 — Present", job1_title: "IT Cybersecurity Analyst",
+            job1_list: "<li><strong>Monitoring:</strong> Assistance in alert monitoring and incident response support.</li><li><strong>Anti-Phishing Defense:</strong> Collaboration in phishing mitigation.</li><li><strong>Governance:</strong> Support in configuration review and security Best Practices application.</li>",
+            date2: "March 2025 — September 2025", job2_title: "Security Consultant",
+            job2_list: "<li><strong>Identity (IAM):</strong> Support in IAM management for Microsoft and Azure AD environments.</li><li><strong>Hardening:</strong> Collaboration in applying System Hardening and security policies.</li><li><strong>Compliance:</strong> Technical documentation writing and identity governance support.</li>",
+            label3: "03. Tech Stack", h2_3: "Technical Skills",
+            skill_ciber: "<i class='fas fa-shield-halved'></i> Cybersecurity", skill_ia: "<i class='fas fa-brain'></i> AI & Data Science", skill_dev: "<i class='fas fa-laptop-code'></i> Development", skill_sys: "<i class='fas fa-server'></i> Systems",
+            label4: "04. Education", h2_4: "Academic Background",
+            edu1_title: "Master in Cybersecurity & AI", edu2_title: "Bachelor's in Computer Engineering (IT)", edu2_sub: "Includes Erasmus+ at Brno Tech, Czech Republic",
+            cert_title: "Certifications & Languages",
+            lang_es: "Spanish", lang_en: "English", lang_de: "German", lang_native: "Native",
+            label5: "05. Skills", h2_5: "Soft Skills",
+            soft1: "Analytical Thinking", soft2: "Problem Solving", soft3: "Technical Communication", soft4: "Agile Adaptability", soft5: "Proactivity",
+            footer_h2: "Let's work together?", footer_copy: "Designed as Interactive Portfolio • 2026"
+        }
+    };
+
+    function setLanguage(lang) {
+        // Actualizar todos los elementos con data-section
+        document.querySelectorAll('[data-section]').forEach(el => {
+            const key = el.getAttribute('data-section');
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+
+        // Actualizar estado de los botones
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.innerText.toLowerCase() === lang) btn.classList.add('active');
+        });
+
+        // Guardar preferencia
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    // Cargar idioma guardado o por defecto
+    window.onload = () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'es';
+        setLanguage(savedLang);
+    };
+</script>
 
 </body>
 </html>
