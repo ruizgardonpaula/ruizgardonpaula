@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paula Ruiz | Software & AI Engineer</title>
+    <title>Paula Ruiz | Frontend & AI Engineer | Diseño y Código</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Paleta Premium Dark (Apple Style) */
-            --bg-deep: #000000; /* Negro puro para el fondo base */
-            --bg-main: #111111; /* Gris ultra oscuro para secciones/tarjetas */
-            --bg-nav: rgba(10, 10, 10, 0.8);
-            --text-primary: #f5f5f7; /* Blanco apagado estilo Apple */
-            --text-secondary: #a1a1a6; /* Gris para texto silenciado */
-            --accent: #e07b6f; /* Salmón oscuro, más vibrante sobre negro */
-            --accent-dim: rgba(224, 123, 111, 0.15);
-            --border: #2d2d30; /* Bordes muy sutiles */
+            /* Paleta: Beige Suave/Crema, Blanco, Gris Oscuro, Oro Rosa/Terracota */
+            --bg-deep: #fbf9f6; /* Crema muy suave de fondo */
+            --bg-card: #ffffff; /* Blanco puro para tarjetas */
+            --bg-nav: rgba(251, 249, 246, 0.7);
+            --text-primary: #1d1d1f; /* Gris casi negro estilo Apple */
+            --text-secondary: #57575e; /* Gris suave para texto secundario */
+            --accent: #d18e74; /* Oro rosa/terracota elegante */
+            --accent-dim: rgba(209, 142, 116, 0.1);
+            --border: #e0e0e0; /* Bordes muy sutiles */
             
-            --base-font: 'Plus Jakarta Sans', sans-serif;
+            --base-font: 'Inter', sans-serif;
             --mono-font: 'JetBrains Mono', monospace;
             
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --transition: all 0.6s var(--ease-out-expo);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
@@ -34,148 +33,127 @@
             color: var(--text-primary);
             font-family: var(--base-font);
             overflow-x: hidden;
-            line-height: 1.47059; /* Line-height estilo Apple */
-            letter-spacing: -0.022em;
+            line-height: 1.6;
+            letter-spacing: -0.015em;
         }
 
-        /* Patrón de fondo sutil (cuadrícula de puntos) */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.3;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Utilidades de animación premium */
-        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out-expo), transform 1s var(--ease-out-expo); }
+        /* Animación de aparición suave (Scroll Reveal) */
+        .reveal { opacity: 0; transform: translateY(20px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* NAVEGACIÓN MINIMALISTA FLOTANTE */
+        /* NAVEGACIÓN ESTILO APPLE LIGHT */
         nav {
             position: fixed;
-            top: 30px; left: 50%;
+            top: 20px; left: 50%;
             transform: translateX(-50%);
-            width: 90%; max-width: 980px;
+            width: 90%; max-width: 950px;
             background: var(--bg-nav);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 40px;
             z-index: 1000;
             padding: 12px 30px;
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.03);
         }
         .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.05em; color: var(--text-primary); text-decoration: none; }
         .nav-logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; transition: color 0.3s ease; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s ease; }
         .nav-links a:hover { color: var(--text-primary); }
 
-        .controls { display: flex; align-items: center; gap: 15px; }
-        .lang-control { display: flex; gap: 6px; border-right: 1px solid var(--border); padding-right: 15px; }
-        .lang-btn { background: none; border: none; cursor: pointer; font-family: var(--mono-font); font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); transition: var(--transition); }
-        .lang-btn.active { color: var(--accent); position: relative; }
-        .lang-btn.active::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1.5px; background: var(--accent); }
+        .controls { display: flex; align-items: center; gap: 10px; }
+        .lang-control { display: flex; gap: 4px; border-right: 1px solid var(--border); padding-right: 10px; }
+        .lang-btn { background: none; border: none; cursor: pointer; font-family: var(--mono-font); font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); opacity: 0.6; transition: 0.3s; }
+        .lang-btn.active { color: var(--accent); opacity: 1; }
 
-        .btn-contact { background: var(--text-primary); color: var(--bg-deep); padding: 8px 20px; border-radius: 20px; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: var(--transition); border: 1px solid var(--text-primary); }
-        .btn-contact:hover { background: transparent; color: var(--text-primary); }
+        .btn-contact { background: var(--text-primary); color: white; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: var(--transition); border: 1px solid var(--text-primary); }
+        .btn-contact:hover { background: white; color: var(--text-primary); }
 
-        /* HERO SECTION - MAXIMALISTA */
+        /* HERO SECTION - MODERNA Y ESTÉTICA */
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; 
-            padding: 140px 20px 80px 20px; 
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            padding: 120px 20px 60px 20px; 
+            background: radial-gradient(circle at top right, #fff4f1 0%, #fbf9f6 60%);
         }
-        .profile-photo-container { position: relative; margin-bottom: 40px; }
+        .profile-photo-container { position: relative; margin-bottom: 30px; }
         .profile-photo {
-            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
-            border: 1px solid var(--border); padding: 4px; background: var(--bg-main);
-            filter: grayscale(100%); transition: filter 0.5s ease, border-color 0.5s ease;
+            width: 170px; height: 170px; border-radius: 50%; object-fit: cover;
+            border: 1px solid var(--border); padding: 5px; background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: var(--transition);
         }
-        .profile-photo-container:hover .profile-photo { filter: grayscale(0%); border-color: var(--accent); }
+        .profile-photo:hover { transform: scale(1.03); border-color: var(--accent); }
         
-        .section-label { font-family: var(--mono-font); color: var(--accent); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 20px; display: block; }
+        .section-label { font-family: var(--mono-font); color: var(--accent); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 15px; display: block; }
         
-        .hero h1 { font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1.05; color: var(--text-primary); }
+        .hero h1 { font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 800; letter-spacing: -0.05em; margin: 0; line-height: 1.1; color: var(--text-primary); }
         .hero h1 span { color: transparent; -webkit-text-stroke: 1px var(--text-primary); }
-        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-secondary); max-width: 700px; margin: 40px 0; font-weight: 400; line-height: 1.6; }
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-secondary); max-width: 650px; margin: 30px 0; font-weight: 400; line-height: 1.6; }
         
         .social-links { display: flex; gap: 15px; }
-        .social-links a { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--border); display: flex; justify-content: center; align-items: center; color: var(--text-secondary); font-size: 1.1rem; transition: var(--transition); background: var(--bg-main); }
-        .social-links a:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-3px) scale(1.05); }
+        .social-links a { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--border); display: flex; justify-content: center; align-items: center; color: var(--text-secondary); font-size: 1.1rem; transition: var(--transition); background: white; }
+        .social-links a:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-3px); }
 
-        /* ESTRUCTURA DE SECCIONES GENERAL */
-        .container { max-width: 1080px; margin: 0 auto; padding: 100px 20px; }
-        h2.section-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-top: 0; margin-bottom: 60px; letter-spacing: -0.04em; color: var(--text-primary); position: relative; display: inline-block;}
-        h2.section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 4px; background: var(--accent); border-radius: 2px;}
+        /* ESTRUCTURA GENERAL DE SECCIONES */
+        .container { max-width: 1050px; margin: 0 auto; padding: 100px 20px; }
+        h2.section-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-top: 0; margin-bottom: 50px; letter-spacing: -0.04em; color: var(--text-primary); }
         
-        /* GRID DE INTRODUCCIÓN */
-        .intro-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 70px; align-items: start; }
-        .intro-text { font-size: 1.2rem; line-height: 1.7; color: var(--text-secondary); font-weight: 400; }
+        /* INTRODUCCIÓN - ENFOQUE FRONTEND */
+        .intro-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+        .intro-text { font-size: 1.25rem; line-height: 1.8; color: var(--text-secondary); font-weight: 400; }
         .intro-text strong { color: var(--text-primary); font-weight: 700; }
 
-        /* BENTO GRID (SKILLS) ESTILO PRO */
-        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .bento-card { background: var(--bg-main); border: 1px solid var(--border); border-radius: 18px; padding: 30px; transition: var(--transition); position: relative; overflow: hidden;}
-        .bento-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--border), transparent); opacity: 0; transition: opacity 0.3s ease; }
-        .bento-card:hover { transform: translateY(-5px); border-color: #444; box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
-        .bento-card:hover::before { opacity: 1; }
+        /* BENTO GRID (SKILLS) LIGHT & CHIC */
+        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .bento-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 30px; transition: var(--transition); box-shadow: 0 4px 20px rgba(0,0,0,0.01); }
+        .bento-card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 10px 40px rgba(0,0,0,0.04); }
+        .bento-card h3 { margin: 0 0 18px 0; font-size: 1rem; display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-primary); }
+        .bento-card h3 i { color: var(--accent); font-size: 1.2rem; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag { background: #f1f3f5; padding: 6px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); transition: 0.3s; border: 1px solid transparent; }
+        .tag:hover { border-color: var(--accent); color: var(--accent); }
 
-        .bento-card h3 { margin: 0 0 20px 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-primary); }
-        .bento-card h3 i { color: var(--accent); font-size: 1.3rem; }
-        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); transition: var(--transition); }
-        .tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
-
-        /* EXPERIENCIA - STORYLINE MINIMALISTA NEGRA */
-        .storyline { position: relative; padding-left: 30px; border-left: 1px solid var(--border); margin-left: 10px;}
-        .story-item { position: relative; margin-bottom: 70px; }
-        .story-item::before { content: ""; position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--bg-deep); border: 2px solid var(--border); transition: border-color 0.3s ease; }
-        .story-item:hover::before { border-color: var(--accent); background: var(--accent); }
-
-        .story-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 15px; gap: 10px; }
+        /* EXPERIENCIA - STORYLINE CHIC */
+        .storyline { position: relative; padding-left: 30px; border-left: 2px solid #e0e0e0; margin-left: 10px;}
+        .story-item { position: relative; margin-bottom: 60px; }
+        .story-item::before { content: ""; position: absolute; left: -39px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg-deep); transition: 0.3s;}
+        .story-item:hover::before { transform: scale(1.2); }
+        
+        .story-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; gap: 10px; }
         .story-item h4 { font-size: 1.6rem; margin: 0; font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); }
         .story-item .company { color: var(--accent); font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; }
-        .story-item .date { font-family: var(--mono-font); font-size: 0.8rem; color: var(--text-secondary); border: 1px solid var(--border); padding: 5px 12px; border-radius: 15px; background: rgba(255,255,255,0.01); }
-        .story-item ul { margin-top: 20px; color: var(--text-secondary); padding-left: 18px; line-height: 1.7; font-size: 0.95rem; }
+        .story-item .date { font-family: var(--mono-font); font-size: 0.8rem; color: var(--text-secondary); border: 1px solid var(--border); padding: 5px 12px; border-radius: 15px; background: white; }
+        .story-item ul { margin-top: 15px; color: var(--text-secondary); padding-left: 18px; line-height: 1.7; font-size: 0.95rem; }
         .story-item li { margin-bottom: 10px; }
         .story-item li strong { color: var(--text-primary); }
 
-        /* PROYECTOS - FLIP CARDS INTERACTIVAS PREMIUM */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 30px; }
-        .flip-card { background-color: transparent; height: 360px; perspective: 1500px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s var(--ease-out-expo); transform-style: preserve-3d; }
+        /* PROYECTOS - FLIP CARDS INTERACTIVAS */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 25px; }
+        .flip-card { background-color: transparent; height: 360px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s var(--ease-out-expo); transform-style: preserve-3d; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 18px; border: 1px solid var(--border); padding: 30px; display: flex; flex-direction: column; overflow: hidden; }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; border: 1px solid var(--border); padding: 30px; display: flex; flex-direction: column; overflow: hidden; }
         
-        /* Frontal de tarjeta */
-        .flip-card-front { background-color: var(--bg-main); align-items: flex-start; text-align: left; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-        .flip-card-front::after { content: ''; position: absolute; bottom: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at bottom right, rgba(255,255,255,0.02), transparent 70%); border-radius: 0 0 18px 0; }
-        
+        .flip-card-front { background-color: white; align-items: flex-start; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .flip-card-front .icon { font-size: 2.2rem; color: var(--text-primary); margin-bottom: 25px; transition: color 0.4s ease; }
         .flip-card:hover .flip-card-front .icon { color: var(--accent); }
-        .flip-card-front h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; color: var(--text-primary); letter-spacing: -0.02em; }
-        .flip-card-front p { font-size: 0.95rem; color: var(--text-secondary); flex-grow: 1; line-height: 1.6; }
-        .flip-card-front .hint { margin-top: auto; font-family: var(--mono-font); font-size: 0.7rem; color: #555; text-transform: uppercase; letter-spacing: 0.2em; display: flex; align-items: center; gap: 8px;}
+        .flip-card-front h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; color: var(--text-primary); letter-spacing: -0.02em; }
+        .flip-card-front p { font-size: 0.9rem; color: var(--text-secondary); flex-grow: 1; line-height: 1.6; }
+        .flip-card-front .hint { margin-top: auto; font-family: var(--mono-font); font-size: 0.75rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.15em; display: flex; align-items: center; gap: 8px;}
         .flip-card:hover .flip-card-front .hint { color: var(--accent); }
 
-        /* Trasera de tarjeta */
-        .flip-card-back { background-color: #080808; border-color: var(--accent); color: var(--text-primary); transform: rotateY(180deg); align-items: center; justify-content: center; text-align: center; box-shadow: inset 0 0 30px rgba(0,0,0,0.6); }
+        .flip-card-back { background-color: var(--text-primary); color: white; transform: rotateY(180deg); align-items: center; justify-content: center; text-align: center; border: none;}
         .flip-card-back h4 { font-size: 1.1rem; color: var(--accent); margin-bottom: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-        .flip-card-back p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 25px; line-height: 1.7; max-width: 280px;}
+        .flip-card-back p { font-size: 0.9rem; color: #ccc; margin-bottom: 25px; line-height: 1.7; max-width: 280px;}
         .flip-card-back .tag-container { justify-content: center; margin-bottom: 25px; }
-        .flip-card-back .tag { background: rgba(255, 255, 255, 0.02); border-color: #333; color: #ccc; }
-        .flip-card-back .project-links a { display: inline-flex; align-items: center; gap: 8px; background: var(--text-primary); color: var(--bg-deep); padding: 9px 18px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.8rem; transition: var(--transition); }
-        .flip-card-back .project-links a:hover { background: white; transform: scale(1.05); }
+        .flip-card-back .tag { background: rgba(255, 255, 255, 0.05); border-color: #333; color: white; }
+        .flip-card-back .project-links a { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--text-primary); padding: 9px 18px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.8rem; transition: var(--transition); }
+        .flip-card-back .project-links a:hover { background: var(--accent); color: white; }
 
-        /* FORMACIÓN & IDIOMAS (PANEL MINIMALISTA) */
+        /* FORMACIÓN & IDIOMAS (PANEL ESTÉTICO) */
         .edu-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; }
         .edu-item { padding-bottom: 25px; border-bottom: 1px solid var(--border); margin-bottom: 25px; }
         .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
@@ -183,22 +161,20 @@
         .edu-item h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; color: var(--text-primary); }
         .edu-item p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        .lang-panel { background: var(--bg-main); border: 1px solid var(--border); padding: 35px; border-radius: 18px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-        .progress-container { margin-bottom: 22px; }
-        .progress-container:last-child { margin-bottom: 0; }
-        .progress-header { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 9px; font-size: 0.9rem; color: var(--text-primary); }
+        .lang-panel { background: white; border: 1px solid var(--border); padding: 35px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.01); }
+        .progress-container { margin-bottom: 20px; }
+        .progress-header { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-primary); }
         .progress-header span:last-child { color: var(--text-secondary); font-family: var(--mono-font); font-size: 0.75rem; }
-        .progress-bar { height: 3px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; }
-        .progress-inner { height: 100%; background: var(--accent); border-radius: 2px; transition: width 1.5s ease-out; width: 0; } /* Empieza en 0 para animación */
+        .progress-bar { height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; }
+        .progress-inner { height: 100%; background: var(--accent); border-radius: 3px; }
 
-        /* FOOTER ESTILO APPLE PRO */
-        footer { background: var(--bg-main); color: var(--text-primary); padding: 100px 20px; text-align: center; border-top: 1px solid var(--border); }
-        footer h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 30px; letter-spacing: -0.04em; color: var(--text-primary); }
-        footer h2 span { color: var(--accent); }
-        footer p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 12px; font-weight: 400; }
-        .footer-mail { display: inline-block; margin-top: 30px; font-size: 1.3rem; color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 4px; transition: var(--transition); }
-        .footer-mail:hover { color: var(--accent); border-color: white; }
-        .footer-bottom { margin-top: 80px; font-family: var(--mono-font); font-size: 0.7rem; color: #444; text-transform: uppercase; letter-spacing: 0.2em; border-top: 1px solid var(--border); padding-top: 30px; display: inline-block; }
+        /* FOOTER MODERNO */
+        footer { background: var(--text-primary); color: white; padding: 100px 20px; text-align: center; }
+        footer h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 30px; letter-spacing: -0.04em; color: white; }
+        footer p { color: #aaa; font-size: 1.1rem; margin-bottom: 10px; font-weight: 400; }
+        .footer-mail { display: inline-block; margin-top: 30px; font-size: 1.3rem; color: white; text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 5px; transition: var(--transition); }
+        .footer-mail:hover { color: var(--accent); }
+        .footer-bottom { margin-top: 80px; font-family: var(--mono-font); font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 0.2em; border-top: 1px solid #333; padding-top: 30px; display: inline-block; }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
@@ -206,13 +182,12 @@
             .bento-grid { grid-template-columns: 1fr; }
             .edu-grid { grid-template-columns: 1fr; gap: 40px;}
             .bento-card { grid-column: span 1 !important; }
-            nav { width: 95%; padding: 12px 18px; top: 15px; }
+            nav { width: 95%; padding: 12px 18px; }
             .nav-links { display: none; }
-            .hero { padding-top: 160px; }
+            .hero { padding-top: 150px; }
             .story-header { flex-direction: column; gap: 8px; align-items: flex-start;}
-            .storyline { padding-left: 20px; margin-left: 5px;}
+            .storyline { padding-left: 20px; }
             .story-item::before { left: -26px; }
-            h2.section-title { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -241,11 +216,9 @@
         <img src="perfil.jpg" alt="Paula Ruiz" class="profile-photo">
     </div>
 
-    <span class="section-label reveal" style="transition-delay: 0.1s;" data-section="hero_tag">AI Developer & Software Engineer</span>
+    <span class="section-label reveal" style="transition-delay: 0.1s;" data-section="hero_tag">Apasionada del Frontend & IA</span>
     <h1 class="reveal" style="transition-delay: 0.2s;" data-section="hero_h1">Paula <span>Ruiz</span></h1>
-    <p class="reveal" style="transition-delay: 0.3s;" data-section="hero_p">
-        Ingeniera de Software impulsando el futuro a través de la <strong>Inteligencia Artificial</strong>, respaldada por un fuerte background analítico en <strong>Ciberseguridad corporativa</strong>.
-    </p>
+    <p class="reveal" style="transition-delay: 0.3s;" data-section="hero_p">Ingeniera de Software impulsando el futuro a través del <strong>desarrollo Frontend visual</strong> y la <strong>Inteligencia Artificial</strong>, respaldada por un fuerte background en Ciberseguridad.</p>
     <div class="social-links reveal" style="transition-delay: 0.4s;">
         <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/pauruigar6" target="_blank"><i class="fab fa-github"></i></a>
@@ -259,7 +232,7 @@
     
     <div class="intro-grid">
         <div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 25px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.01em;" data-section="intro_subtitle">Evolución & Adaptabilidad</h3>
+            <h3 style="font-size: 1.4rem; margin-bottom: 25px; font-weight: 800; color: var(--text-primary);" data-section="intro_subtitle">Visión & Adaptabilidad</h3>
             <div class="tag-container" style="margin-bottom: 20px;">
                 <span class="tag" data-section="soft1">Pensamiento Analítico</span>
                 <span class="tag" data-section="soft2">Resolución de Problemas</span>
@@ -269,7 +242,7 @@
         </div>
         <div>
             <p class="intro-text" data-section="p_intro">
-                Soy una Ingeniera Informática con un objetivo claro: <strong>crear software inteligente y escalable</strong>. Aunque mi experiencia operativa reciente se ha forjado en la trinchera de la <strong>Ciberseguridad</strong> (lo que me otorga una visión crítica sobre la creación de código seguro y robusto), mi verdadera pasión y hacia donde dirijo mi carrera es el <strong>Desarrollo de Software y la Inteligencia Artificial</strong>.
+                Soy una Ingeniera Informática con un objetivo claro: <strong>crear software visualmente impecable, inteligente y escalable</strong>. Aunque mi experiencia operativa reciente se ha forjado en la trinchera de la <strong>Ciberseguridad corporativa</strong> (lo que me otorga una visión crítica sobre la creación de código seguro y robusto), mi verdadera pasión y hacia donde dirijo mi carrera es el <strong>Desarrollo Frontend y la Inteligencia Artificial</strong>.
                 <br><br>
                 Me considero una profesional incansable, con una <strong>enorme capacidad para aprender tecnologías nuevas en tiempo récord</strong> y adaptarme a entornos dinámicos. Mi enfoque es aportar valor desde el primer día, absorber conocimiento y contribuir al éxito técnico del equipo.
             </p>
@@ -327,9 +300,9 @@
             </div>
         </div>
         <div class="bento-card" style="grid-column: span 2;">
-            <h3 data-section="skill_dev"><i class="fas fa-code"></i> Desarrollo de Software</h3>
+            <h3 data-section="skill_dev"><i class="fas fa-code"></i> Desarrollo Frontend & Movilidad</h3>
             <div class="tag-container">
-                <span class="tag">Java</span> <span class="tag">JavaScript</span> <span class="tag">React Native</span>
+                <span class="tag">JavaScript</span> <span class="tag">React Native</span> <span class="tag">Java</span>
                 <span class="tag">Expo</span> <span class="tag">HTML5 / CSS3</span> <span class="tag">Git / GitHub</span>
             </div>
         </div>
@@ -470,14 +443,14 @@
 
         <div id="lang-section">
             <div class="lang-panel">
-                <h4 style="font-size: 1.2rem; margin-bottom: 30px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.01em;" data-section="lang_title">Competencia Lingüística</h4>
+                <h4 style="font-size: 1.2rem; margin-bottom: 30px; font-weight: 800; color: var(--text-primary);" data-section="lang_title">Competencia Lingüística</h4>
                 
                 <div class="progress-container">
                     <div class="progress-header">
                         <span data-section="lang_es">Español</span>
                         <span data-section="lang_native">Nativo</span>
                     </div>
-                    <div class="progress-bar"><div class="progress-inner" data-width="100%"></div></div>
+                    <div class="progress-bar"><div class="progress-inner" style="width: 100%;"></div></div>
                 </div>
 
                 <div class="progress-container">
@@ -485,7 +458,7 @@
                         <span data-section="lang_en">Inglés</span>
                         <span>B2 - Cambridge</span>
                     </div>
-                    <div class="progress-bar"><div class="progress-inner" data-width="75%"></div></div>
+                    <div class="progress-bar"><div class="progress-inner" style="width: 75%;"></div></div>
                 </div>
 
                 <div class="progress-container">
@@ -493,7 +466,7 @@
                         <span data-section="lang_de">Alemán</span>
                         <span>A1/A2</span>
                     </div>
-                    <div class="progress-bar"><div class="progress-inner" data-width="30%"></div></div>
+                    <div class="progress-bar"><div class="progress-inner" style="width: 30%;"></div></div>
                 </div>
             </div>
         </div>
@@ -502,8 +475,8 @@
 
 <footer>
     <div class="container reveal">
-        <h2 data-section="footer_h2">¿Trabajamos <span>juntos</span>?</h2>
-        <p data-section="footer_p">Actualmente abierta a nuevas oportunidades y retos técnicos.</p>
+        <h2 data-section="footer_h2">¿Construimos algo visual?</h2>
+        <p data-section="footer_p">Actualmente abierta a nuevas oportunidades y retos técnicos en Frontend o IA.</p>
         <p>Sevilla, España | +34 634 211 691</p>
         <a href="mailto:ruizgardonpaula@gmail.com" class="footer-mail">ruizgardonpaula@gmail.com</a>
         
@@ -516,20 +489,20 @@
 </footer>
 
 <script>
-    // Diccionario de Traducciones (Mantenido intacto)
+    // Diccionario de Traducciones (Adaptado al nuevo enfoque)
     const translations = {
         es: {
             nav1: "Perfil", nav2: "Experiencia", nav3: "Tecnologías", nav4: "Formación", nav5: "Proyectos", nav_contact: "Contactar",
-            hero_tag: "AI Developer & Software Engineer", hero_h1: "Paula <span>Ruiz</span>",
-            hero_p: "Ingeniera de Software impulsando el futuro a través de la <strong>Inteligencia Artificial</strong>, respaldada por un fuerte background analítico en <strong>Ciberseguridad corporativa</strong>.",
-            label1: "Introducción", h2_1: "Perfil Profesional", intro_subtitle: "Evolución & Adaptabilidad",
-            p_intro: "Soy una Ingeniera Informática con un objetivo claro: <strong>crear software inteligente y escalable</strong>. Aunque mi experiencia operativa reciente se ha forjado en la trinchera de la <strong>Ciberseguridad</strong> (lo que me otorga una visión crítica sobre la creación de código seguro y robusto), mi verdadera pasión y hacia donde dirijo mi carrera es el <strong>Desarrollo de Software y la Inteligencia Artificial</strong>.<br><br>Me considero una profesional incansable, con una <strong>enorme capacidad para aprender tecnologías nuevas en tiempo récord</strong> y adaptarme a entornos dinámicos. Mi enfoque es aportar valor desde el primer día, absorber conocimiento y contribuir al éxito técnico del equipo.",
+            hero_tag: "Apasionada del Frontend & IA", hero_h1: "Paula <span>Ruiz</span>",
+            hero_p: "Ingeniera de Software impulsando el futuro a través del <strong>desarrollo Frontend visual</strong> y la <strong>Inteligencia Artificial</strong>, respaldada por un fuerte background en Ciberseguridad.",
+            label1: "Introducción", h2_1: "Perfil Profesional", intro_subtitle: "Visión & Adaptabilidad",
+            p_intro: "Soy una Ingeniera Informática con un objetivo claro: <strong>crear software visualmente impecable, inteligente y escalable</strong>. Aunque mi experiencia operativa reciente se ha forjado en la trinchera de la <strong>Ciberseguridad corporativa</strong> (lo que me otorga una visión crítica sobre la creación de código seguro y robusto), mi verdadera pasión y hacia donde dirijo mi carrera es el <strong>Desarrollo Frontend y la Inteligencia Artificial</strong>.<br><br>Me considero una profesional incansable, con una <strong>enorme capacidad para aprender tecnologías nuevas en tiempo récord</strong> y adaptarme a entornos dinámicos. Mi enfoque es aportar valor desde el primer día, absorber conocimiento y contribuir al éxito técnico del equipo.",
             label2: "Experiencia", h2_2: "Trayectoria Operativa",
             date1: "Feb 2026 — Presente", job1_title: "Analista de Ciberseguridad IT",
             job1_list: "<li><strong>Monitorización Analítica:</strong> Gestión activa de alertas y soporte ágil en la respuesta a incidentes, desarrollando una alta capacidad de análisis crítico.</li><li><strong>Defensa Anti-Phishing:</strong> Ejecución de estrategias de mitigación en entornos corporativos de alta demanda.</li><li><strong>Gobernanza & Best Practices:</strong> Auditoría de configuraciones y aplicación estricta de normativas de seguridad, garantizando infraestructuras resilientes.</li>",
             date2: "Mar 2025 — Sep 2025", job2_title: "Consultora de Seguridad",
             job2_list: "<li><strong>Gestión de Identidades (IAM):</strong> Administración avanzada de identidades en ecosistemas complejos de Microsoft y Azure AD.</li><li><strong>Hardening de Sistemas:</strong> Implementación de políticas de fortificación y bastionado de sistemas para reducir superficies de ataque.</li><li><strong>Cumplimiento Normativo:</strong> Elaboración exhaustiva de documentación técnica y consultoría en gobernanza de identidad corporativa.</li>",
-            label3: "Stack Tecnológico", h2_3: "Aptitudes Técnicas", skill_ciber: "<i class='fas fa-shield-halved'></i> Ciberseguridad (Base)", skill_ia: "<i class='fas fa-brain'></i> IA & Data Science", skill_dev: "<i class='fas fa-code'></i> Desarrollo de Software", skill_sys: "<i class='fas fa-terminal'></i> Sistemas & Entornos",
+            label3: "Stack Tecnológico", h2_3: "Aptitudes Técnicas", skill_ciber: "<i class='fas fa-shield-halved'></i> Ciberseguridad (Base)", skill_ia: "<i class='fas fa-brain'></i> IA & Data Science", skill_dev: "<i class='fas fa-code'></i> Desarrollo Frontend & Movilidad", skill_sys: "<i class='fas fa-terminal'></i> Sistemas & Entornos",
             label_proj: "Portfolio", h2_proj: "Proyectos Destacados", hint_hover: "<i class='fas fa-info-circle'></i> Hover para detalles", proj_details: "Detalles del Proyecto",
             proj1_title: "TFG: Automatización VM", proj1_desc: "Extensión integrable con Virt-Manager para automatizar despliegues.", proj1_back: "Desarrollo de una extensión en Python utilizando GTK+ 3 para la automatización total de creación de máquinas virtuales a partir de plantillas, gestionando pools mediante la API de Libvirt en entornos KVM/QEMU.",
             proj2_title: "Whizzy App", proj2_desc: "App móvil colaborativa para gestión de tareas con sistema de gamificación.", proj2_back: "Aplicación multiplataforma diseñada para organizar tareas del hogar. Implementa un sistema de puntuación, rankings en tiempo real y despliegue ágil mediante Expo y file-based routing.",
@@ -538,20 +511,20 @@
             label4: "Formación", h2_4: "Preparación Académica", edu1_title: "Máster Ciberseguridad e IA", edu2_title: "Grado Ingeniería Informática (TI)", edu2_sub: "<i class='fas fa-globe-europe'></i> Incluye Erasmus+ en Brno Tech, Rep. Checa", cert_title: "Certificaciones Destacadas", lang_title: "Competencia Lingüística",
             lang_es: "Español", lang_en: "Inglés", lang_de: "Alemán", lang_native: "Nativo",
             soft1: "Pensamiento Analítico", soft2: "Resolución de Problemas", soft4: "Adaptabilidad Agile", soft5: "Proactividad Absoluta",
-            footer_h2: "¿Trabajamos <span>juntos</span>?", footer_p: "Actualmente abierta a nuevas oportunidades y retos técnicos.", footer_copy: "Paula Ruiz © Portfolio Profesional • 2026"
+            footer_h2: "¿Construimos algo visual?", footer_p: "Actualmente abierta a nuevas oportunidades y retos técnicos en Frontend o IA.", footer_copy: "Paula Ruiz © Portfolio Profesional • 2026"
         },
         en: {
             nav1: "Profile", nav2: "Experience", nav3: "Tech Stack", nav4: "Education", nav5: "Projects", nav_contact: "Contact Me",
-            hero_tag: "AI Developer & Software Engineer", hero_h1: "Paula <span>Ruiz</span>",
-            hero_p: "Software Engineer driving the future through <strong>Artificial Intelligence</strong>, backed by a strong analytical background in <strong>corporate Cybersecurity</strong>.",
-            label1: "Introduction", h2_1: "Professional Profile", intro_subtitle: "Evolution & Adaptability",
-            p_intro: "I am a Computer Engineer with a clear goal: <strong>building smart and scalable software</strong>. Although my recent operational experience was forged in the trenches of <strong>Cybersecurity</strong> (giving me a critical view on creating secure and robust code), my true passion and career focus is <strong>Software Development and Artificial Intelligence</strong>.<br><br>I consider myself a relentless professional with a <strong>huge capacity to learn new technologies in record time</strong> and adapt to dynamic environments. My approach is to add value from day one, absorb knowledge, and contribute to the technical success of the team.",
+            hero_tag: "Frontend & AI Passionate", hero_h1: "Paula <span>Ruiz</span>",
+            hero_p: "Software Engineer driving the future through <strong>visual Frontend development</strong> and <strong>Artificial Intelligence</strong>, backed by a strong background in Cybersecurity.",
+            label1: "Introduction", h2_1: "Professional Profile", intro_subtitle: "Vision & Adaptability",
+            p_intro: "I am a Computer Engineer with a clear goal: <strong>building visually flawless, intelligent, and scalable software</strong>. Although my recent operational experience was forged in the trenches of <strong>corporate Cybersecurity</strong> (giving me a critical view on creating secure and robust code), my true passion and career focus is <strong>Frontend Development and Artificial Intelligence</strong>.<br><br>I consider myself a relentless professional with a <strong>huge capacity to learn new technologies in record time</strong> and adapt to dynamic environments. My approach is to add value from day one, absorb knowledge, and contribute to the technical success of the team.",
             label2: "Experience", h2_2: "Operational History",
             date1: "Feb 2026 — Present", job1_title: "IT Cybersecurity Analyst",
             job1_list: "<li><strong>Analytical Monitoring:</strong> Active alert management and agile incident response support, developing high critical analysis skills.</li><li><strong>Anti-Phishing Defense:</strong> Execution of mitigation strategies in high-demand corporate environments.</li><li><strong>Governance & Best Practices:</strong> Configuration auditing and strict application of security regulations, ensuring resilient infrastructures.</li>",
             date2: "Mar 2025 — Sep 2025", job2_title: "Security Consultant",
-            job2_list: "<li><strong>Identity Management (IAM):</strong> Advanced identity administration in complex Microsoft and Azure AD ecosystems.</li><li><strong>System Hardening:</strong> Implementation of hardening policies to reduce attack surfaces.</li><li><strong>Compliance:</strong> Comprehensive technical documentation and consulting in corporate identity governance.</li>",
-            label3: "Tech Stack", h2_3: "Technical Skills", skill_ciber: "<i class='fas fa-shield-halved'></i> Cybersecurity (Base)", skill_ia: "<i class='fas fa-brain'></i> AI & Data Science", skill_dev: "<i class='fas fa-code'></i> Software Development", skill_sys: "<i class='fas fa-terminal'></i> Systems & Environments",
+            job2_list: "<li><strong>Identity Management (IAM):</strong> Advanced identity administration in complex Microsoft and Azure AD ecosystems.</li><li><strong>Hardening de Sistemas:</strong> Implementation of hardening policies to reduce attack surfaces.</li><li><strong>Compliance:</strong> Comprehensive technical documentation and consulting in corporate identity governance.</li>",
+            label3: "Tech Stack", h2_3: "Technical Skills", skill_ciber: "<i class='fas fa-shield-halved'></i> Cybersecurity (Base)", skill_ia: "<i class='fas fa-brain'></i> AI & Data Science", skill_dev: "<i class='fas fa-code'></i> Frontend & Mobile Development", skill_sys: "<i class='fas fa-terminal'></i> Systems & Environments",
             label_proj: "Portfolio", h2_proj: "Featured Projects", hint_hover: "<i class='fas fa-info-circle'></i> Hover for details", proj_details: "Project Details",
             proj1_title: "Thesis: VM Automation", proj1_desc: "Virt-Manager extension to automate deployments.", proj1_back: "Development of a Python extension using GTK+ 3 for full automation of virtual machine creation from templates, managing pools via the Libvirt API in KVM/QEMU environments.",
             proj2_title: "Whizzy App", proj2_desc: "Collaborative mobile app for task management with gamification.", proj2_back: "Cross-platform application designed to organize household tasks. Implements a point system, real-time rankings, and agile deployment using Expo and file-based routing.",
@@ -560,7 +533,7 @@
             label4: "Education", h2_4: "Academic Background", edu1_title: "Master in Cybersecurity & AI", edu2_title: "Bachelor's in Computer Engineering (IT)", edu2_sub: "<i class='fas fa-globe-europe'></i> Includes Erasmus+ at Brno Tech, Czech Republic", cert_title: "Featured Certifications", lang_title: "Language Proficiency",
             lang_es: "Spanish", lang_en: "English", lang_de: "German", lang_native: "Native",
             soft1: "Analytical Thinking", soft2: "Problem Solving", soft4: "Agile Adaptability", soft5: "Absolute Proactivity",
-            footer_h2: "Let's work <span>together</span>?", footer_p: "Currently open to new opportunities and technical challenges.", footer_copy: "Paula Ruiz © Professional Portfolio • 2026"
+            footer_h2: "Let's build something visual?", footer_p: "Currently open to new opportunities and technical challenges in Frontend or AI.", footer_copy: "Paula Ruiz © Professional Portfolio • 2026"
         }
     };
 
@@ -573,15 +546,6 @@
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 entry.target.classList.add('active');
-                
-                // Si la sección contiene barras de progreso, activarlas
-                const progressBars = entry.target.querySelectorAll('.progress-inner');
-                if (progressBars.length > 0) {
-                    progressBars.forEach(bar => {
-                        bar.style.width = bar.getAttribute('data-width');
-                    });
-                }
-                
                 observer.unobserve(entry.target);
             });
         }, revealOptions);
@@ -589,7 +553,7 @@
         reveals.forEach(reveal => revealOnScroll.observe(reveal));
     });
 
-    // Función de cambio de idioma (Mantenida intacta)
+    // Función de cambio de idioma
     function setLanguage(lang) {
         document.querySelectorAll('[data-section]').forEach(el => {
             const key = el.getAttribute('data-section');
