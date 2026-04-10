@@ -6,19 +6,26 @@
     <title>Paula Ruiz | Software & AI Engineer</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Paleta de Colores: Chic, Profesional, Apple-style */
-            --bg-body: #f3f2ee; /* Greige elegante */
-            --bg-card: #ffffff; /* Blanco puro */
-            --text-main: #1d1d1f; /* Negro suave Apple */
-            --text-muted: #6e6e73; /* Gris técnico */
-            --accent: #c2695c; /* Salmón oscuro sofisticado */
-            --accent-light: #f9ecea; /* Salmón muy claro para fondos de tags */
+            /* Paleta de Colores: Mantenida intacta */
+            --bg-body: #f3f2ee; 
+            --bg-card: #ffffff; 
+            --text-main: #1d1d1f; 
+            --text-muted: #6e6e73; 
+            --accent: #c2695c; 
+            --accent-light: #f9ecea; 
             --border: #e5e5ea;
-            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* Nuevas variables de estilo profesional */
+            --radius-card: 16px;
+            --radius-btn: 8px;
+            --radius-pill: 12px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
         }
 
         /* Reset y Base */
@@ -30,6 +37,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Scrollbar Premium */
@@ -38,40 +46,40 @@
         ::-webkit-scrollbar-thumb { background: #d1d1d6; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-        /* NAVEGACIÓN GLASSMORPHISM */
+        /* NAVEGACIÓN GLASSMORPHISM - Estilo más corporativo */
         nav {
             position: fixed;
-            top: 25px; left: 50%;
+            top: 20px; left: 50%;
             transform: translateX(-50%);
             width: 90%; max-width: 1000px;
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50px;
+            border-radius: var(--radius-pill);
             z-index: 1000;
-            padding: 12px 35px;
+            padding: 12px 30px;
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
-        .nav-logo { font-weight: 800; font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: var(--text-main); }
+        .nav-logo { font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--text-main); }
         .nav-logo span { color: var(--accent); }
         .nav-links { display: flex; gap: 25px; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; transition: var(--transition); }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; transition: var(--transition); }
         .nav-links a:hover { color: var(--text-main); }
 
         .controls-container { display: flex; align-items: center; gap: 15px; }
         .lang-control { display: flex; gap: 8px; border-right: 1px solid var(--border); padding-right: 15px; }
-        .lang-btn { background: none; border: none; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); transition: 0.3s; }
-        .lang-btn.active { color: var(--accent); font-weight: 800; }
+        .lang-btn { background: none; border: none; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 0.8rem; font-weight: 500; color: var(--text-muted); transition: 0.3s; }
+        .lang-btn.active { color: var(--accent); font-weight: 700; }
         
         .contact-btn {
             background: var(--text-main); color: var(--bg-card);
-            padding: 10px 22px; border-radius: 30px; text-decoration: none;
+            padding: 8px 20px; border-radius: var(--radius-btn); text-decoration: none;
             font-size: 0.85rem; font-weight: 600; transition: var(--transition);
         }
-        .contact-btn:hover { background: var(--accent); transform: scale(1.05); }
+        .contact-btn:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
         /* HERO SECTION */
         .hero {
@@ -81,147 +89,160 @@
             padding: 120px 20px 60px 20px; 
             position: relative;
         }
-        .hero::before { /* Sutil gradiente de fondo radial */
-            content: ''; position: absolute; top: -10%; left: -10%; width: 120%; height: 120%;
-            background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.8) 0%, transparent 60%);
+        .hero::before { 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.6) 0%, transparent 70%);
             z-index: -1;
         }
 
         .profile-photo {
-            width: 170px; height: 170px;
-            border-radius: 40px; /* Squircle style */
+            width: 160px; height: 160px;
+            border-radius: var(--radius-card); 
             object-fit: cover;
-            border: 6px solid var(--bg-card);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 4px solid var(--bg-card);
+            box-shadow: var(--shadow-md);
             margin-bottom: 30px;
             transition: var(--transition);
         }
-        .profile-photo:hover { transform: translateY(-10px) rotate(2deg); border-color: var(--accent-light); }
+        .profile-photo:hover { transform: translateY(-5px); border-color: var(--accent-light); }
 
-        .tag-hero { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
-        .hero h1 { font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 800; letter-spacing: -0.04em; margin: 0; line-height: 1.1; color: var(--text-main); }
-        .hero h1 span { color: var(--text-muted); font-weight: 300; font-style: italic; }
-        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 650px; margin: 25px 0; font-weight: 400; line-height: 1.6; }
+        .tag-hero { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
+        .hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 700; letter-spacing: -0.03em; margin: 0; line-height: 1.1; color: var(--text-main); }
+        .hero h1 span { color: var(--text-muted); font-weight: 400; font-style: italic; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 25px 0; font-weight: 400; line-height: 1.6; }
         .hero p strong { color: var(--text-main); font-weight: 600; }
 
-        .social-links a { color: var(--text-main); font-size: 1.5rem; margin: 0 10px; transition: var(--transition); display: inline-block; }
+        .social-links a { color: var(--text-main); font-size: 1.3rem; margin: 0 12px; transition: var(--transition); display: inline-block; }
         .social-links a:hover { color: var(--accent); transform: translateY(-3px); }
 
         /* CONTAINERS & TYPOGRAPHY */
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
-        h2 { font-size: 2.8rem; font-weight: 800; margin-bottom: 40px; letter-spacing: -0.03em; color: var(--text-main); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
+        h2 { font-size: 2.4rem; font-weight: 700; margin-bottom: 40px; letter-spacing: -0.02em; color: var(--text-main); }
 
         /* TARJETAS BASE */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border-radius: var(--radius-card);
+            padding: 35px;
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
-        .card:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.06); transform: translateY(-5px); }
+        .card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 
         /* TAGS */
-        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: var(--bg-body); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-main); transition: 0.3s; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: var(--bg-body); padding: 6px 14px; border-radius: var(--radius-btn); font-size: 0.8rem; font-weight: 600; color: var(--text-main); transition: 0.3s; }
         .tag:hover { background: var(--accent-light); color: var(--accent); }
 
         /* PERFIL (Intro) */
-        .profile-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center; }
-        .profile-text { font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); }
-        .profile-text strong { color: var(--text-main); font-weight: 700; }
+        .profile-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center; }
+        .profile-text { font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); }
+        .profile-text strong { color: var(--text-main); font-weight: 600; }
         .profile-text .highlight { color: var(--accent); font-weight: 600; }
 
-        /* EXPERIENCIA (Timeline rediseñado) */
-        .timeline { position: relative; margin-top: 20px; }
-        .timeline::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 0; width: 2px; background: var(--border); }
-        .timeline-item { position: relative; padding-left: 40px; margin-bottom: 50px; }
+        /* EXPERIENCIA (Timeline elegante) */
+        .timeline { position: relative; margin-top: 10px; }
+        .timeline::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 0; width: 1px; background: var(--border); }
+        .timeline-item { position: relative; padding-left: 35px; margin-bottom: 40px; }
+        .timeline-item:last-child { margin-bottom: 0; }
         .timeline-item::before {
-            content: ""; position: absolute; left: -5px; top: 5px; width: 12px; height: 12px;
-            border-radius: 50%; background: var(--accent); outline: 4px solid var(--bg-body); transition: var(--transition);
+            content: ""; position: absolute; left: -5px; top: 6px; width: 11px; height: 11px;
+            border-radius: 50%; background: var(--accent); outline: 3px solid var(--bg-card); transition: var(--transition);
         }
-        .timeline-item:hover::before { transform: scale(1.5); outline-color: var(--accent-light); }
-        .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
-        .timeline-title { font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
-        .timeline-company { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 15px; display: inline-block; }
-        .timeline-list { list-style: none; color: var(--text-muted); }
-        .timeline-list li { margin-bottom: 10px; position: relative; padding-left: 20px; }
-        .timeline-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .timeline-item:hover::before { transform: scale(1.2); background: var(--text-main); }
+        .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; display: block; }
+        .timeline-title { font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 3px; }
+        .timeline-company { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 15px; display: inline-block; }
+        .timeline-list { list-style: none; color: var(--text-muted); font-size: 0.95rem; }
+        .timeline-list li { margin-bottom: 8px; position: relative; padding-left: 18px; }
+        .timeline-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
         /* BENTO GRID SKILLS */
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .bento-item { display: flex; flex-direction: column; gap: 20px; }
-        .bento-item h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 12px; margin: 0; }
-        .bento-item i { color: var(--accent); font-size: 1.5rem; background: var(--accent-light); padding: 12px; border-radius: 15px; }
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .bento-item { display: flex; flex-direction: column; gap: 15px; padding: 25px; }
+        .bento-item h3 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; margin: 0; }
+        .bento-item i { color: var(--accent); font-size: 1.2rem; background: var(--accent-light); padding: 10px; border-radius: 10px; }
 
-        /* PROYECTOS: FLIP CARDS 3D INTERACTIVAS */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* PROYECTOS: SLIDE CARDS INTERACTIVAS (Rediseño profesional) */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
         .flip-card {
             background-color: transparent;
-            height: 380px;
-            perspective: 1000px;
+            height: 360px;
             cursor: pointer;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
-        .flip-card-inner {
-            position: relative; width: 100%; height: 100%; text-align: left;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-        }
-        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card:hover { box-shadow: var(--shadow-md); transform: translateY(-5px); }
         
-        .flip-card-front, .flip-card-back {
+        .flip-card-inner { position: relative; width: 100%; height: 100%; }
+        
+        .flip-card-front {
             position: absolute; width: 100%; height: 100%;
-            -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 30px; padding: 40px;
-            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 35px;
+            background: var(--bg-card);
             display: flex; flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: opacity 0.4s ease;
+            z-index: 1;
         }
-        .flip-card-front { z-index: 2; }
-        .flip-card-front .icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
-        .flip-card-front h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .flip-card-front .icon { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .flip-card-front h3 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 700;}
         .flip-card-front p { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
-        .flip-card-front .flip-indicator { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-top: auto; display: flex; align-items: center; gap: 5px; }
+        .flip-card-front .flip-indicator { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: 5px; }
         
-        .flip-card-back { transform: rotateY(180deg); background: var(--text-main); color: var(--bg-card); }
-        .flip-card-back h3 { color: var(--bg-card); font-size: 1.3rem; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
-        .flip-card-back p { font-size: 0.9rem; color: #a1a1a6; margin-bottom: 20px; }
+        .flip-card-back { 
+            position: absolute; width: 100%; height: 100%;
+            padding: 35px;
+            background: var(--text-main); color: var(--bg-card); 
+            display: flex; flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 2;
+        }
+        .flip-card:hover .flip-card-back { transform: translateY(0); }
+        
+        .flip-card-back h3 { color: var(--bg-card); font-size: 1.2rem; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .flip-card-back p { font-size: 0.9rem; color: #a1a1a6; margin-bottom: 20px; line-height: 1.6; }
         .flip-card-back .tag { background: rgba(255,255,255,0.1); color: var(--bg-card); border: 1px solid rgba(255,255,255,0.2); }
-        .flip-card-back .project-link { margin-top: auto; display: inline-flex; align-items: center; gap: 10px; color: var(--accent); text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: 0.3s; }
+        .flip-card-back .project-link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
         .flip-card-back .project-link:hover { color: #ffffff; }
 
         /* EDUCACIÓN & IDIOMAS */
         .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .edu-card { padding: 30px; }
-        .edu-date { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--accent); }
-        .edu-title { font-size: 1.2rem; font-weight: 700; margin: 10px 0; }
+        .edu-card { padding: 25px; margin-bottom: 20px;}
+        .edu-date { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+        .edu-title { font-size: 1.1rem; font-weight: 700; margin: 8px 0; }
         
         .progress-container { margin-top: 15px; }
-        .progress-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; }
-        .progress-label span:last-child { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; }
-        .progress-bar { height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+        .progress-label span:last-child { color: var(--text-muted); font-weight: 500; font-size: 0.8rem; }
+        .progress-bar { height: 4px; background: var(--border); border-radius: 10px; overflow: hidden; }
         .progress-inner { height: 100%; background: var(--accent); border-radius: 10px; transition: width 1.5s ease-in-out; }
 
         /* FOOTER */
-        footer { background: var(--text-main); color: var(--bg-card); padding: 80px 20px; text-align: center; border-top-left-radius: 50px; border-top-right-radius: 50px; }
-        footer h2 { color: var(--bg-card); margin-bottom: 20px; }
-        footer p { color: #a1a1a6; font-size: 1.1rem; margin-bottom: 5px; }
-        footer a { color: var(--accent); text-decoration: none; font-weight: 600; transition: 0.3s; }
+        footer { background: var(--text-main); color: var(--bg-card); padding: 60px 20px; text-align: center; border-top-left-radius: 24px; border-top-right-radius: 24px; }
+        footer h2 { color: var(--bg-card); margin-bottom: 15px; font-size: 2rem; }
+        footer p { color: #a1a1a6; font-size: 1rem; margin-bottom: 5px; }
+        footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.3s; }
         footer a:hover { color: #fff; }
 
         /* ANIMACIÓN SCROLL (FADE IN) */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .profile-grid, .edu-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3.5rem; }
+            .hero h1 { font-size: 2.8rem; }
             nav { width: 95%; padding: 12px 20px; }
-            .nav-links { display: none; } /* Ocultar links en móvil para limpieza */
+            .nav-links { display: none; }
             .hero { padding-top: 140px; }
+            .profile-photo { width: 130px; height: 130px; }
         }
     </style>
 </head>
@@ -246,13 +267,13 @@
 </nav>
 
 <header class="hero">
-    <img src="perfil.jpg" alt="Paula Ruiz" class="profile-photo" onerror="this.src='https://via.placeholder.com/170/f9ecea/c2695c?text=PR'">
+    <img src="perfil.jpg" alt="Paula Ruiz" class="profile-photo" onerror="this.src='https://via.placeholder.com/160/f9ecea/c2695c?text=PR'">
     
     <span class="tag-hero" data-lang="hero_tag">Software, AI & Cybersecurity Engineer</span>
     <h1 data-lang="hero_h1">Paula <span>Ruiz</span></h1>
     <p data-lang="hero_p">Ingeniera proactiva enfocada en la creación de <strong>Software y Soluciones IA</strong>. <br> Combinando una mentalidad ágil con experiencia técnica corporativa.</p>
     
-    <div class="social-links" style="margin-top: 20px;">
+    <div class="social-links" style="margin-top: 10px;">
         <a href="https://www.linkedin.com/in/paularuizgardon" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/pauruigar6" target="_blank"><i class="fab fa-github"></i></a>
         <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i></a>
@@ -269,8 +290,8 @@
                 Me considero una profesional sumamente <strong>proactiva, meticulosa y con una curva de aprendizaje acelerada</strong>. Mi motivación principal es continuar formándome sin descanso y aportar valor real en un entorno dinámico. Busco activamente nuevos retos donde explotar mi creatividad técnica, adaptarme a nuevas tecnologías y construir software inteligente, eficiente y seguro.
             </div>
             <div>
-                <div style="background: var(--bg-body); border-radius: 20px; height: 100%; min-height: 250px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
-                    <i class="fas fa-code-branch" style="font-size: 5rem; color: var(--border);"></i>
+                <div style="background: var(--bg-body); border-radius: var(--radius-card); height: 100%; min-height: 220px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
+                    <i class="fas fa-code-branch" style="font-size: 4rem; color: var(--border);"></i>
                 </div>
             </div>
         </div>
@@ -355,7 +376,7 @@
                         <div class="tag-container" style="margin-top: 15px;">
                             <span class="tag">Python</span> <span class="tag">Libvirt</span>
                         </div>
-                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-right"></i></div>
+                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
                     </div>
                     <div class="flip-card-back">
                         <h3 data-lang="proj1_title_back">Automatización de VMs</h3>
@@ -377,7 +398,7 @@
                         <div class="tag-container" style="margin-top: 15px;">
                             <span class="tag">React Native</span> <span class="tag">Expo</span>
                         </div>
-                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-right"></i></div>
+                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
                     </div>
                     <div class="flip-card-back">
                         <h3 data-lang="proj2_title_back">Whizzy: Task Manager</h3>
@@ -399,7 +420,7 @@
                         <div class="tag-container" style="margin-top: 15px;">
                             <span class="tag">JavaScript</span> <span class="tag">Firebase</span>
                         </div>
-                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-right"></i></div>
+                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
                     </div>
                     <div class="flip-card-back">
                         <h3 data-lang="proj3_title_back">CareMonitor (eHealth)</h3>
@@ -421,7 +442,7 @@
                         <div class="tag-container" style="margin-top: 15px;">
                             <span class="tag">HTML5</span> <span class="tag">CSS3</span>
                         </div>
-                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-right"></i></div>
+                        <div class="flip-indicator" data-lang="click_details">Ver detalles <i class="fas fa-arrow-up"></i></div>
                     </div>
                     <div class="flip-card-back">
                         <h3 data-lang="proj4_title_back">Seville Interactive Web</h3>
@@ -442,7 +463,7 @@
             
             <div>
                 <h2 data-lang="h2_4" style="margin-bottom: 20px;">Formación</h2>
-                <div class="card edu-card" style="margin-bottom: 20px;">
+                <div class="card edu-card">
                     <span class="edu-date">2025 - 2026</span>
                     <h4 class="edu-title" data-lang="edu1_title">Máster Ciberseguridad e IA</h4>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">CEI – Centro de Estudios e Innovación</p>
@@ -457,8 +478,8 @@
 
             <div>
                 <h2 data-lang="h2_5" style="margin-bottom: 20px;">Habilidades & Idiomas</h2>
-                <div class="card" style="margin-bottom: 20px;">
-                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;" data-lang="cert_title">Certificaciones</h4>
+                <div class="card" style="margin-bottom: 20px; padding: 25px;">
+                    <h4 style="margin-bottom: 15px; font-size: 1.05rem;" data-lang="cert_title">Certificaciones</h4>
                     <div class="tag-container">
                         <span class="tag" style="background: var(--bg-body);">Google: Foundations of Cybersecurity</span>
                         <span class="tag" style="background: var(--bg-body);">Google: Python Essentials 1 & 2</span>
@@ -467,8 +488,8 @@
                     </div>
                 </div>
 
-                <div class="card" style="margin-bottom: 20px;">
-                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;" data-lang="soft_title">Soft Skills</h4>
+                <div class="card" style="margin-bottom: 20px; padding: 25px;">
+                    <h4 style="margin-bottom: 15px; font-size: 1.05rem;" data-lang="soft_title">Soft Skills</h4>
                     <div class="tag-container">
                         <span class="tag">Proactividad y Autodidactismo</span>
                         <span class="tag">Pensamiento Analítico</span>
@@ -477,7 +498,7 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card" style="padding: 25px;">
                     <div class="progress-container">
                         <div class="progress-label"><span data-lang="lang_es">Español</span> <span data-lang="lang_native">Nativo</span></div>
                         <div class="progress-bar"><div class="progress-inner" style="width: 100%;"></div></div>
@@ -498,11 +519,11 @@
 </main>
 
 <footer>
-    <div class="container" style="padding: 20px;">
+    <div class="container" style="padding: 10px;">
         <h2 data-lang="footer_h2">¿Construimos algo increíble?</h2>
         <p>Siempre dispuesta a aprender y aportar en nuevos proyectos.</p>
         <p style="margin-top: 20px;">
-            <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i> ruizgardonpaula@gmail.com</a> | 
+            <a href="mailto:ruizgardonpaula@gmail.com"><i class="fas fa-envelope"></i> ruizgardonpaula@gmail.com</a> <span style="color: #a1a1a6; margin: 0 10px;">|</span> 
             <span style="color: #a1a1a6;">+34 634 211 691</span>
         </p>
         <div style="margin-top: 50px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #6e6e73;" data-lang="footer_copy">
@@ -528,7 +549,7 @@
             job2_list: "<li><strong>Identidad (IAM):</strong> Apoyo en la gestión de IAM en entornos Microsoft y Azure AD.</li><li><strong>Hardening:</strong> Colaboración en la aplicación de System Hardening y políticas de seguridad.</li><li><strong>Cumplimiento:</strong> Redacción de documentación técnica y soporte en gobernanza de identidad.</li>",
             h2_3: "Aptitudes Técnicas",
             skill_ciber: "<i class='fas fa-shield-halved'></i> Ciberseguridad", skill_ia: "<i class='fas fa-brain'></i> IA & Data Science", skill_dev: "<i class='fas fa-laptop-code'></i> Desarrollo Software", skill_sys: "<i class='fas fa-server'></i> Sistemas",
-            h2_proj: "Proyectos Destacados", click_details: "Girar para leer <i class='fas fa-arrow-right'></i>",
+            h2_proj: "Proyectos Destacados", click_details: "Ver detalles <i class='fas fa-arrow-up'></i>",
             proj1_title: "TFG: Automatización VM", proj1_desc_short: "Extensión integrable con Virt-Manager para la gestión automatizada y creación de máquinas virtuales.", proj1_title_back: "Automatización de VMs", proj1_desc: "Extensión diseñada para Virt-Manager que permite automatizar la creación de máquinas virtuales a partir de plantillas preconfiguradas, optimizando la gestión de pools de almacenamiento y redes mediante la API de Libvirt.",
             proj2_title: "Whizzy App", proj2_desc_short: "App colaborativa multiplataforma orientada a la gestión de tareas con sistema de gamificación.", proj2_title_back: "Whizzy: Task Manager", proj2_desc: "Aplicación móvil colaborativa enfocada en la gestión de tareas del hogar. Implementa un sistema de puntuación, rankings en tiempo real y despliegue multiplataforma para fomentar la productividad mediante gamificación.",
             proj3_title: "CareMonitor-IPe2", proj3_desc_short: "Aplicación del sector eHealth para el registro y gestión segura de datos médicos y multimedia.", proj3_title_back: "CareMonitor (eHealth)", proj3_desc: "Solución eHealth para monitorización de pacientes. Permite almacenar históricos médicos, integrar capturas de fotos, grabar audio contextual y garantizar la persistencia de datos en la nube de manera eficiente usando Firebase.",
@@ -552,7 +573,7 @@
             job2_list: "<li><strong>Identity (IAM):</strong> Support in IAM management for Microsoft and Azure AD environments.</li><li><strong>Hardening:</strong> Collaboration in System Hardening and security policies.</li><li><strong>Compliance:</strong> Technical documentation and identity governance support.</li>",
             h2_3: "Technical Skills",
             skill_ciber: "<i class='fas fa-shield-halved'></i> Cybersecurity", skill_ia: "<i class='fas fa-brain'></i> AI & Data Science", skill_dev: "<i class='fas fa-laptop-code'></i> Software Dev", skill_sys: "<i class='fas fa-server'></i> Systems",
-            h2_proj: "Featured Projects", click_details: "Flip to read <i class='fas fa-arrow-right'></i>",
+            h2_proj: "Featured Projects", click_details: "View details <i class='fas fa-arrow-up'></i>",
             proj1_title: "Thesis: VM Automation", proj1_desc_short: "Virt-Manager extension to automate VM creation and management.", proj1_title_back: "VM Automation Tool", proj1_desc: "Virt-Manager extension that automates virtual machine creation from preconfigured templates, optimizing storage pools and network management via the Libvirt API.",
             proj2_title: "Whizzy App", proj2_desc_short: "Cross-platform collaborative household task management app with gamification.", proj2_title_back: "Whizzy: Task Manager", proj2_desc: "Collaborative mobile app focused on household task management. Implements a point system, real-time rankings, and cross-platform deployment to boost productivity through gamification.",
             proj3_title: "CareMonitor-IPe2", proj3_desc_short: "eHealth application for secure registration and management of medical and multimedia data.", proj3_title_back: "CareMonitor (eHealth)", proj3_desc: "eHealth solution for patient monitoring. Allows storing medical histories, integrating photo captures, recording contextual audio, and ensuring efficient cloud data persistence using Firebase.",
