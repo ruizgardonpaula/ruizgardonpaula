@@ -1,1547 +1,1418 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Paula Ruiz | AI & Data Engineer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Paula Ruiz | AI & Data Engineer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-<style>
+    <style>
 
-:root{
+        :root{
 
-    --bg:#f5f7fb;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
+            --bg:#f7f3ee;
+            --bg-soft:#fdfaf7;
+            --card:#ffffffcc;
 
-    --accent:#5b7cff;
-    --accent-light:#eef2ff;
+            --text:#1f1f1f;
+            --text-soft:#6d6a67;
 
-    --border:#e5e7eb;
+            --accent:#c9ab93;
+            --accent-dark:#b79378;
 
-    --shadow:
-    0 10px 30px rgba(0,0,0,0.04);
+            --border:#e7dfd7;
 
-    --transition: all .4s cubic-bezier(.16,1,.3,1);
+            --shadow:
+            0 10px 40px rgba(0,0,0,.04);
 
-}
+            --transition:
+            all .45s cubic-bezier(.16,1,.3,1);
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
+        }
 
-body{
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+        }
 
-    font-family:'Inter',sans-serif;
-    background:
-    radial-gradient(circle at top left,
-    rgba(91,124,255,0.10),
-    transparent 35%),
-    var(--bg);
+        body{
 
-    color:var(--text);
+            font-family:'Inter',sans-serif;
 
-    overflow-x:hidden;
+            background:
+            linear-gradient(
+            to bottom,
+            #faf7f4,
+            #f4efe9
+            );
 
-    -webkit-font-smoothing:antialiased;
+            color:var(--text);
 
-}
+            overflow-x:hidden;
 
-::selection{
-    background:var(--accent);
-    color:white;
-}
+            -webkit-font-smoothing:antialiased;
 
-.container{
-    width:min(1200px,90%);
-    margin:auto;
-}
+        }
 
-section{
-    padding:120px 0;
-}
+        body::before{
 
-.section-header{
-    margin-bottom:60px;
-}
+            content:"";
 
-.section-subtitle{
+            position:fixed;
 
-    font-size:.8rem;
-    font-family:'JetBrains Mono',monospace;
+            inset:0;
 
-    color:var(--accent);
+            background:
+            radial-gradient(
+            circle at top right,
+            rgba(201,171,147,.12),
+            transparent 35%
+            );
 
-    text-transform:uppercase;
+            z-index:-1;
 
-    letter-spacing:.15em;
+        }
 
-    margin-bottom:15px;
+        .container{
 
-    display:block;
+            width:min(1200px,92%);
+            margin:auto;
 
-}
+        }
 
-.section-title{
+        section{
 
-    font-size:clamp(2.5rem,5vw,4rem);
+            padding:120px 0;
 
-    font-weight:800;
+        }
 
-    letter-spacing:-0.05em;
+        /* NAV */
 
-    line-height:1;
+        nav{
 
-}
+            position:fixed;
 
-p{
-    line-height:1.8;
-}
+            top:0;
+            left:0;
 
-a{
-    text-decoration:none;
-}
+            width:100%;
 
-img{
-    width:100%;
-    display:block;
-}
+            z-index:1000;
 
-/* NAV */
+            backdrop-filter:blur(16px);
 
-nav{
+            background:
+            rgba(247,243,238,.75);
 
-    position:fixed;
+            border-bottom:
+            1px solid rgba(255,255,255,.4);
 
-    top:0;
-    left:0;
+        }
 
-    width:100%;
+        .nav-inner{
 
-    z-index:1000;
+            width:min(1200px,92%);
+            margin:auto;
 
-    backdrop-filter:blur(14px);
+            display:flex;
 
-    background:rgba(245,247,251,.75);
+            justify-content:space-between;
+            align-items:center;
 
-    border-bottom:1px solid rgba(229,231,235,.7);
+            padding:22px 0;
 
-}
+        }
 
-.nav-inner{
+        .logo{
 
-    width:min(1200px,90%);
+            font-size:1rem;
+            font-weight:800;
 
-    margin:auto;
+            letter-spacing:.2em;
 
-    height:80px;
+        }
 
-    display:flex;
+        .logo span{
 
-    align-items:center;
+            color:var(--accent-dark);
 
-    justify-content:space-between;
+        }
 
-}
+        .nav-links{
 
-.logo{
+            display:flex;
+            gap:35px;
 
-    font-weight:800;
+        }
 
-    font-size:1.1rem;
+        .nav-links a{
 
-    letter-spacing:-0.03em;
+            text-decoration:none;
 
-}
+            color:var(--text-soft);
 
-.logo span{
-    color:var(--accent);
-}
+            font-size:.95rem;
+            font-weight:500;
 
-.nav-links{
+            transition:var(--transition);
 
-    display:flex;
+        }
 
-    align-items:center;
+        .nav-links a:hover{
 
-    gap:30px;
+            color:var(--text);
 
-}
+        }
 
-.nav-links a{
+        .contact-btn{
 
-    color:var(--muted);
+            padding:12px 22px;
 
-    font-size:.95rem;
+            border-radius:100px;
 
-    transition:var(--transition);
+            background:var(--text);
 
-}
+            color:white;
 
-.nav-links a:hover{
-    color:var(--text);
-}
+            text-decoration:none;
 
-.contact-btn{
+            font-size:.9rem;
+            font-weight:600;
 
-    padding:12px 22px;
+            transition:var(--transition);
 
-    background:var(--text);
+        }
 
-    color:white !important;
+        .contact-btn:hover{
 
-    border-radius:999px;
+            transform:translateY(-2px);
 
-    font-weight:600;
+            background:var(--accent-dark);
 
-}
+        }
 
-.contact-btn:hover{
+        /* HERO */
 
-    background:var(--accent);
+        .hero{
 
-}
+            min-height:100vh;
 
-/* HERO */
+            display:grid;
 
-.hero{
+            grid-template-columns:
+            1.3fr .7fr;
 
-    min-height:100vh;
+            gap:80px;
 
-    display:grid;
+            align-items:center;
 
-    grid-template-columns:1.2fr .8fr;
+        }
 
-    align-items:center;
+        .hero-text{
 
-    gap:100px;
+            animation:fadeUp 1s ease;
 
-}
+        }
 
-.hero-content{
+        .eyebrow{
 
-    padding-top:80px;
+            display:inline-flex;
 
-}
+            align-items:center;
 
-.hero-badge{
+            gap:10px;
 
-    display:inline-flex;
+            padding:10px 18px;
 
-    align-items:center;
+            border-radius:100px;
 
-    gap:10px;
+            background:
+            rgba(255,255,255,.6);
 
-    padding:10px 18px;
+            border:
+            1px solid var(--border);
 
-    border-radius:999px;
+            margin-bottom:30px;
 
-    background:var(--accent-light);
+            font-size:.85rem;
+            color:var(--text-soft);
 
-    color:var(--accent);
+        }
 
-    font-size:.9rem;
+        .hero h1{
 
-    font-weight:600;
+            font-size:
+            clamp(4rem,9vw,7rem);
 
-    margin-bottom:30px;
+            line-height:.9;
 
-}
+            letter-spacing:-.08em;
 
-.hero-title{
+            margin-bottom:30px;
 
-    font-size:clamp(4rem,9vw,7rem);
+        }
 
-    line-height:.9;
+        .hero h1 span{
 
-    letter-spacing:-0.07em;
+            color:var(--accent-dark);
 
-    font-weight:800;
+        }
 
-    margin-bottom:35px;
+        .hero p{
 
-}
+            max-width:700px;
 
-.hero-title span{
-    color:var(--accent);
-}
+            font-size:1.25rem;
 
-.hero-desc{
+            line-height:1.8;
 
-    max-width:700px;
+            color:var(--text-soft);
 
-    font-size:1.2rem;
+        }
 
-    color:var(--muted);
+        .hero-actions{
 
-    margin-bottom:50px;
+            margin-top:45px;
 
-}
+            display:flex;
 
-.hero-actions{
+            gap:20px;
+            flex-wrap:wrap;
 
-    display:flex;
+        }
 
-    align-items:center;
+        .btn-primary{
 
-    gap:20px;
+            padding:16px 28px;
 
-    flex-wrap:wrap;
+            border-radius:100px;
 
-}
+            background:var(--text);
 
-.primary-btn{
+            color:white;
 
-    background:var(--accent);
+            text-decoration:none;
 
-    color:white;
+            font-weight:600;
 
-    padding:16px 26px;
+            transition:var(--transition);
 
-    border-radius:14px;
+        }
 
-    font-weight:600;
+        .btn-primary:hover{
 
-    transition:var(--transition);
+            background:var(--accent-dark);
 
-}
+            transform:translateY(-3px);
 
-.primary-btn:hover{
+        }
 
-    transform:translateY(-3px);
+        .btn-secondary{
 
-}
+            padding:16px 28px;
 
-.secondary-btn{
+            border-radius:100px;
 
-    color:var(--text);
+            border:1px solid var(--border);
 
-    font-weight:600;
+            text-decoration:none;
 
-}
+            color:var(--text);
 
-.hero-image{
+            background:white;
 
-    position:relative;
+            font-weight:600;
 
-}
+            transition:var(--transition);
 
-.hero-image::before{
+        }
 
-    content:"";
+        .btn-secondary:hover{
 
-    position:absolute;
+            transform:translateY(-3px);
 
-    inset:-20px;
+            border-color:var(--accent-dark);
 
-    background:linear-gradient(
-    135deg,
-    rgba(91,124,255,.15),
-    transparent);
+        }
 
-    border-radius:40px;
+        /* FOTO */
 
-}
+        .hero-photo{
 
-.hero-image img{
+            position:relative;
 
-    position:relative;
+            display:flex;
 
-    border-radius:30px;
+            justify-content:center;
 
-    box-shadow:var(--shadow);
+        }
 
-    aspect-ratio:4/5;
+        .photo-wrapper{
 
-    object-fit:cover;
+            width:320px;
 
-}
+            position:relative;
 
-/* ABOUT */
+        }
 
-.about-text{
+        .photo-wrapper::before{
 
-    font-size:1.35rem;
+            content:"";
 
-    color:var(--muted);
+            position:absolute;
 
-    max-width:900px;
+            inset:-20px;
 
-}
+            border-radius:40px;
 
-.about-text strong{
+            background:
+            linear-gradient(
+            135deg,
+            rgba(201,171,147,.25),
+            rgba(255,255,255,.1)
+            );
 
-    color:var(--text);
+            z-index:-1;
 
-}
+        }
 
-/* EXPERIENCE */
+        .photo-wrapper img{
 
-.timeline{
+            width:100%;
 
-    display:flex;
+            border-radius:35px;
 
-    flex-direction:column;
+            object-fit:cover;
 
-    gap:40px;
+            display:block;
 
-}
+            box-shadow:var(--shadow);
 
-.job{
+        }
 
-    background:rgba(255,255,255,.7);
+        /* TITLES */
 
-    backdrop-filter:blur(10px);
+        .section-title{
 
-    border:1px solid var(--border);
+            font-size:
+            clamp(2.5rem,5vw,4rem);
 
-    border-radius:28px;
+            line-height:1;
 
-    padding:40px;
+            letter-spacing:-.06em;
 
-    transition:var(--transition);
+            margin-bottom:25px;
 
-}
+        }
 
-.job:hover{
+        .section-desc{
 
-    transform:translateY(-6px);
+            color:var(--text-soft);
 
-    box-shadow:var(--shadow);
+            max-width:760px;
 
-}
+            line-height:1.9;
 
-.job-top{
+            font-size:1.1rem;
 
-    display:flex;
+        }
 
-    justify-content:space-between;
+        /* GRID */
 
-    gap:20px;
+        .grid{
 
-    flex-wrap:wrap;
+            display:grid;
 
-    margin-bottom:20px;
+            gap:30px;
 
-}
+            margin-top:60px;
 
-.job-title{
+        }
 
-    font-size:1.5rem;
+        .grid-2{
 
-    font-weight:700;
+            grid-template-columns:
+            repeat(2,1fr);
 
-}
+        }
 
-.job-company{
+        .grid-3{
 
-    color:var(--accent);
+            grid-template-columns:
+            repeat(3,1fr);
 
-    font-weight:600;
+        }
 
-    margin-top:8px;
+        /* CARDS */
 
-    display:block;
+        .card{
 
-}
+            background:
+            rgba(255,255,255,.7);
 
-.job-date{
+            backdrop-filter:blur(14px);
 
-    color:var(--muted);
+            border:
+            1px solid rgba(255,255,255,.5);
 
-    font-family:'JetBrains Mono',monospace;
+            border-radius:32px;
 
-    font-size:.9rem;
+            padding:40px;
 
-}
+            transition:var(--transition);
 
-.job ul{
+            box-shadow:
+            0 10px 30px rgba(0,0,0,.03);
 
-    list-style:none;
+            position:relative;
 
-    margin-top:20px;
+            overflow:hidden;
 
-}
+        }
 
-.job li{
+        .card::before{
 
-    color:var(--muted);
+            content:"";
 
-    margin-bottom:14px;
+            position:absolute;
 
-    position:relative;
+            inset:0;
 
-    padding-left:22px;
+            background:
+            linear-gradient(
+            135deg,
+            rgba(201,171,147,.08),
+            transparent
+            );
 
-    line-height:1.7;
+            opacity:0;
 
-}
+            transition:var(--transition);
 
-.job li::before{
+        }
 
-    content:"";
+        .card:hover{
 
-    position:absolute;
+            transform:
+            translateY(-10px);
 
-    left:0;
-    top:12px;
+            border-color:
+            var(--accent);
 
-    width:8px;
-    height:8px;
+            box-shadow:
+            0 20px 50px rgba(0,0,0,.06);
 
-    border-radius:50%;
+        }
 
-    background:var(--accent);
+        .card:hover::before{
 
-}
+            opacity:1;
 
-/* SKILLS */
+        }
 
-.skills-grid{
+        .card *{
 
-    display:grid;
+            position:relative;
+            z-index:2;
 
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+        }
 
-    gap:24px;
+        .card-icon{
 
-}
+            width:58px;
+            height:58px;
 
-.skill-card{
+            border-radius:18px;
 
-    background:var(--card);
+            background:
+            rgba(201,171,147,.15);
 
-    border:1px solid var(--border);
+            display:flex;
 
-    border-radius:24px;
+            align-items:center;
+            justify-content:center;
 
-    padding:35px;
+            color:var(--accent-dark);
 
-    transition:var(--transition);
+            font-size:1.3rem;
 
-}
+            margin-bottom:25px;
 
-.skill-card:hover{
+        }
 
-    transform:translateY(-5px);
+        .card h3{
 
-    box-shadow:var(--shadow);
+            font-size:1.5rem;
 
-}
+            margin-bottom:15px;
 
-.skill-card i{
+        }
 
-    font-size:2rem;
+        .card p{
 
-    color:var(--accent);
+            color:var(--text-soft);
 
-    margin-bottom:20px;
+            line-height:1.8;
 
-}
+        }
 
-.skill-card h3{
+        /* EXPERIENCE */
 
-    margin-bottom:15px;
+        .job{
 
-    font-size:1.2rem;
+            display:grid;
 
-}
+            grid-template-columns:
+            220px 1fr;
 
-.skill-card p{
+            gap:40px;
 
-    color:var(--muted);
+            padding:45px;
 
-}
+        }
 
-/* TECH STACK */
+        .job-date{
 
-.tech-stack{
+            color:var(--accent-dark);
 
-    display:flex;
+            font-weight:600;
 
-    flex-wrap:wrap;
+        }
 
-    gap:16px;
+        .job ul{
 
-}
+            margin-top:20px;
 
-.tech-item{
+            padding-left:20px;
 
-    padding:14px 20px;
+        }
 
-    background:white;
+        .job li{
 
-    border:1px solid var(--border);
+            margin-bottom:12px;
 
-    border-radius:999px;
+            color:var(--text-soft);
 
-    font-size:.95rem;
+            line-height:1.7;
 
-    font-weight:500;
+        }
 
-    transition:var(--transition);
+        /* TECH */
 
-}
+        .carousel-wrapper{
 
-.tech-item:hover{
+            overflow:hidden;
 
-    background:var(--accent);
+            margin-top:60px;
 
-    color:white;
+        }
 
-    border-color:var(--accent);
+        .carousel-track{
 
-}
+            display:flex;
 
-/* PROJECTS */
+            gap:22px;
 
-.projects{
+            width:max-content;
 
-    display:grid;
+        }
 
-    gap:30px;
+        .track-left{
 
-}
+            animation:
+            scrollLeft 35s linear infinite;
 
-.project{
+        }
 
-    background:white;
+        .track-right{
 
-    border:1px solid var(--border);
+            animation:
+            scrollRight 40s linear infinite;
 
-    border-radius:30px;
+            margin-top:25px;
 
-    padding:40px;
+        }
 
-    transition:var(--transition);
+        .carousel-wrapper:hover .carousel-track{
 
-}
+            animation-play-state:paused;
 
-.project:hover{
+        }
 
-    transform:translateY(-6px);
+        .tech-card{
 
-    box-shadow:var(--shadow);
+            min-width:260px;
 
-}
+            background:
+            rgba(255,255,255,.75);
 
-.project-top{
+            backdrop-filter:blur(14px);
 
-    display:flex;
+            border:
+            1px solid var(--border);
 
-    justify-content:space-between;
+            border-radius:28px;
 
-    gap:20px;
+            padding:28px;
 
-    flex-wrap:wrap;
+            display:flex;
 
-    margin-bottom:25px;
+            align-items:center;
 
-}
+            gap:18px;
 
-.project-title{
+            transition:var(--transition);
 
-    font-size:1.6rem;
+        }
 
-    font-weight:700;
+        .tech-card:hover{
 
-}
+            transform:
+            translateY(-8px);
 
-.project-desc{
+            border-color:
+            var(--accent);
 
-    color:var(--muted);
+        }
 
-    margin-bottom:25px;
+        .tech-card i{
 
-}
+            font-size:1.5rem;
 
-.tags{
+            color:var(--accent-dark);
 
-    display:flex;
+        }
 
-    flex-wrap:wrap;
+        .tech-card span{
 
-    gap:12px;
+            font-weight:600;
 
-}
+        }
 
-.tag{
+        /* PROJECTS */
 
-    background:var(--accent-light);
+        .project-link{
 
-    color:var(--accent);
+            margin-top:25px;
 
-    padding:8px 14px;
+            display:inline-flex;
 
-    border-radius:999px;
+            align-items:center;
 
-    font-size:.85rem;
+            gap:10px;
 
-    font-weight:600;
+            text-decoration:none;
 
-}
+            color:var(--accent-dark);
 
-.project-link{
+            font-weight:600;
 
-    display:inline-flex;
+        }
 
-    align-items:center;
+        /* FOOTER */
 
-    gap:10px;
+        footer{
 
-    margin-top:30px;
+            padding:120px 0 80px;
 
-    color:var(--text);
+            text-align:center;
 
-    font-weight:600;
+        }
 
-}
+        footer h2{
 
-/* EDUCATION */
+            font-size:
+            clamp(3rem,7vw,6rem);
 
-.education{
+            line-height:.95;
 
-    display:flex;
+            letter-spacing:-.08em;
 
-    flex-direction:column;
+            margin-bottom:30px;
 
-    gap:30px;
+        }
 
-}
+        footer p{
 
-.edu-card{
+            color:var(--text-soft);
 
-    background:white;
+            margin-bottom:50px;
 
-    border:1px solid var(--border);
+        }
 
-    border-radius:24px;
+        .footer-links{
 
-    padding:35px;
+            display:flex;
 
-}
+            justify-content:center;
 
-.edu-card h3{
+            gap:25px;
 
-    font-size:1.3rem;
+            flex-wrap:wrap;
 
-    margin-bottom:10px;
+        }
 
-}
+        .footer-links a{
 
-.edu-card p{
+            width:60px;
+            height:60px;
 
-    color:var(--muted);
+            border-radius:50%;
 
-}
+            background:white;
 
-/* LANGUAGES */
+            display:flex;
 
-.languages{
+            align-items:center;
+            justify-content:center;
 
-    display:grid;
+            color:var(--text);
 
-    gap:18px;
+            text-decoration:none;
 
-}
+            border:1px solid var(--border);
 
-.language{
+            transition:var(--transition);
 
-    display:flex;
+        }
 
-    justify-content:space-between;
+        .footer-links a:hover{
 
-    padding:25px 30px;
+            background:var(--accent-dark);
 
-    background:white;
+            color:white;
 
-    border:1px solid var(--border);
+            transform:translateY(-5px);
 
-    border-radius:18px;
+        }
 
-}
+        /* ANIMATIONS */
 
-/* FOOTER */
+        @keyframes scrollLeft{
 
-footer{
+            from{
+                transform:translateX(0);
+            }
 
-    padding:120px 0 60px;
+            to{
+                transform:translateX(-50%);
+            }
 
-}
+        }
 
-.footer-box{
+        @keyframes scrollRight{
 
-    background:linear-gradient(
-    135deg,
-    #111827,
-    #1f2937);
+            from{
+                transform:translateX(-50%);
+            }
 
-    color:white;
+            to{
+                transform:translateX(0);
+            }
 
-    border-radius:40px;
+        }
 
-    padding:80px 60px;
+        @keyframes fadeUp{
 
-}
+            from{
 
-.footer-title{
+                opacity:0;
+                transform:translateY(40px);
 
-    font-size:clamp(2.5rem,6vw,5rem);
+            }
 
-    line-height:1;
+            to{
 
-    letter-spacing:-0.05em;
+                opacity:1;
+                transform:translateY(0);
 
-    margin-bottom:30px;
+            }
 
-}
+        }
 
-.footer-text{
+        /* RESPONSIVE */
 
-    color:rgba(255,255,255,.7);
+        @media(max-width:992px){
 
-    max-width:700px;
+            .hero{
 
-    margin-bottom:40px;
+                grid-template-columns:1fr;
 
-}
+                padding-top:120px;
 
-.footer-links{
+            }
 
-    display:flex;
+            .hero-photo{
 
-    gap:20px;
+                order:-1;
 
-    flex-wrap:wrap;
+            }
 
-}
+            .photo-wrapper{
 
-.footer-links a{
+                width:250px;
 
-    color:white;
+            }
 
-    border:1px solid rgba(255,255,255,.2);
+            .grid-2,
+            .grid-3{
 
-    padding:14px 20px;
+                grid-template-columns:1fr;
 
-    border-radius:14px;
+            }
 
-    transition:var(--transition);
+            .job{
 
-}
+                grid-template-columns:1fr;
 
-.footer-links a:hover{
+            }
 
-    background:var(--accent);
+            .nav-links{
 
-    border-color:var(--accent);
+                display:none;
 
-}
+            }
 
-.footer-bottom{
+        }
 
-    margin-top:40px;
+    </style>
 
-    color:rgba(255,255,255,.5);
-
-    font-size:.9rem;
-
-}
-
-/* RESPONSIVE */
-
-@media(max-width:992px){
-
-    .hero{
-
-        grid-template-columns:1fr;
-
-        gap:60px;
-
-        padding-top:140px;
-
-    }
-
-    .hero-image{
-
-        max-width:400px;
-
-    }
-
-}
-
-@media(max-width:768px){
-
-    section{
-        padding:90px 0;
-    }
-
-    .hero-title{
-        font-size:4rem;
-    }
-
-    .footer-box{
-        padding:50px 30px;
-    }
-
-}
-
-</style>
 </head>
 
 <body>
 
-<nav>
+    <!-- NAV -->
 
-    <div class="nav-inner">
+    <nav>
 
-        <div class="logo">
-            PAULA<span>.</span>RUIZ
-        </div>
+        <div class="nav-inner">
 
-        <div class="nav-links">
+            <div class="logo">
+                PAULA<span>.</span>RUIZ
+            </div>
 
-            <a href="#perfil">Perfil</a>
-            <a href="#experiencia">Experiencia</a>
-            <a href="#skills">Skills</a>
-            <a href="#proyectos">Proyectos</a>
+            <div class="nav-links">
+
+                <a href="#about">Perfil</a>
+                <a href="#experience">Experiencia</a>
+                <a href="#projects">Proyectos</a>
+                <a href="#stack">Stack</a>
+
+            </div>
 
             <a href="mailto:ruizgardonpaula@gmail.com"
             class="contact-btn">
+
                 Contactar
+
             </a>
 
         </div>
 
-    </div>
+    </nav>
 
-</nav>
+    <!-- HERO -->
 
-<!-- HERO -->
+    <section class="hero container">
 
-<header class="container hero">
+        <div class="hero-text">
 
-    <div class="hero-content">
+            <div class="eyebrow">
 
-        <div class="hero-badge">
-            <i class="fa-solid fa-sparkles"></i>
-            AI Engineer · Data Engineer
+                <i class="fa-solid fa-circle"></i>
+                Disponible para nuevos proyectos
+
+            </div>
+
+            <h1>
+
+                AI &
+                <span>Data</span>
+                Engineer
+
+            </h1>
+
+            <p>
+
+                Ingeniera Informática especializada en ingeniería de datos,
+                cloud, inteligencia artificial y ciberseguridad.
+                Actualmente desarrollando pipelines distribuidos con
+                Apache Spark y Scala en entornos cloud escalables.
+
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#projects" class="btn-primary">
+
+                    Ver proyectos
+
+                </a>
+
+                <a href="https://github.com/ruizgardonpaula"
+                target="_blank"
+                class="btn-secondary">
+
+                    GitHub
+
+                </a>
+
+            </div>
+
         </div>
 
-        <h1 class="hero-title">
-            Paula <span>Ruiz</span>
-        </h1>
+        <div class="hero-photo">
 
-        <p class="hero-desc">
+            <div class="photo-wrapper">
 
-            Ingeniería de datos, inteligencia artificial y cloud computing.
+                <img src="perfil.jpg"
+                alt="Paula Ruiz"/>
 
-            Desarrollo pipelines escalables, automatización inteligente y soluciones orientadas a datos en entornos distribuidos.
-
-        </p>
-
-        <div class="hero-actions">
-
-            <a href="mailto:ruizgardonpaula@gmail.com"
-            class="primary-btn">
-                Contactar
-            </a>
-
-            <a href="https://github.com/pauruigar6"
-            target="_blank"
-            class="secondary-btn">
-                GitHub →
-            </a>
-
-            <a href="https://www.linkedin.com/in/paularuizgardon"
-            target="_blank"
-            class="secondary-btn">
-                LinkedIn →
-            </a>
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-    <div class="hero-image">
+    <!-- ABOUT -->
 
-        <img src="perfil.jpg" alt="Paula Ruiz">
+    <section id="about">
 
-    </div>
-
-</header>
-
-<!-- ABOUT -->
-
-<section id="perfil">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-subtitle">
-                01 · PERFIL
-            </span>
+        <div class="container">
 
             <h2 class="section-title">
-                Perfil Profesional
+
+                Tecnología, datos e inteligencia artificial
+                aplicados a sistemas reales.
+
             </h2>
+
+            <p class="section-desc">
+
+                Perfil técnico orientado a automatización, ingeniería de datos
+                y arquitecturas modernas basadas en IA.
+                Experiencia en Python, Spark, Scala y ecosistemas Azure,
+                combinando visión analítica con desarrollo de soluciones
+                escalables y seguras.
+
+            </p>
 
         </div>
 
-        <p class="about-text">
+    </section>
 
-            Ingeniera Informática con Máster en
-            <strong> Ciberseguridad e Inteligencia Artificial</strong>
-            y experiencia en ingeniería de datos, cloud y seguridad.
+    <!-- EXPERIENCE -->
 
-            <br><br>
+    <section id="experience">
 
-            Actualmente trabajo como
-            <strong>Data Engineer</strong>,
-            desarrollando pipelines distribuidos con Apache Spark y Scala, optimizando procesos ETL y grandes volúmenes de datos en entornos cloud.
+        <div class="container">
 
-            <br><br>
+            <div class="grid">
 
-            Mi perfil combina automatización, machine learning, APIs y cloud engineering con experiencia en Azure, Microsoft 365 y arquitecturas modernas orientadas a IA y sistemas escalables.
+                <div class="card job">
 
-        </p>
+                    <div class="job-date">
 
-    </div>
-
-</section>
-
-<!-- EXPERIENCE -->
-
-<section id="experiencia">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-subtitle">
-                02 · EXPERIENCIA
-            </span>
-
-            <h2 class="section-title">
-                Trayectoria
-            </h2>
-
-        </div>
-
-        <div class="timeline">
-
-            <article class="job">
-
-                <div class="job-top">
-
-                    <div>
-
-                        <h3 class="job-title">
-                            Data Engineer
-                        </h3>
-
-                        <span class="job-company">
-                            41OPS Meta Technologies · Madrid
-                        </span>
+                        Abril 2026 · Actualidad
 
                     </div>
 
-                    <span class="job-date">
-                        Abril 2026 — Actualidad
-                    </span>
-
-                </div>
-
-                <ul>
-
-                    <li>
-                        Desarrollo de pipelines escalables con Apache Spark y Scala en entornos cloud distribuidos.
-                    </li>
-
-                    <li>
-                        Implementación de procesos ETL para transformación y optimización de grandes volúmenes de datos.
-                    </li>
-
-                    <li>
-                        Mejora de rendimiento en procesos distribuidos y aseguramiento de calidad del dato.
-                    </li>
-
-                </ul>
-
-            </article>
-
-            <article class="job">
-
-                <div class="job-top">
-
                     <div>
 
-                        <h3 class="job-title">
-                            Analista de Ciberseguridad IT
+                        <h3>
+
+                            Data Engineer · 41OPS Meta Technologies
+
                         </h3>
 
-                        <span class="job-company">
-                            Atlantica Sustainable Infrastructure · Sevilla
-                        </span>
+                        <ul>
+
+                            <li>
+                                Desarrollo de pipelines ETL escalables
+                                con Apache Spark y Scala.
+                            </li>
+
+                            <li>
+                                Optimización de procesos distribuidos
+                                orientados a grandes volúmenes de datos.
+                            </li>
+
+                            <li>
+                                Mejora de rendimiento y calidad del dato
+                                en entornos cloud.
+                            </li>
+
+                        </ul>
 
                     </div>
 
-                    <span class="job-date">
-                        Febrero 2026 — Abril 2026
-                    </span>
-
                 </div>
 
-                <ul>
+                <div class="card job">
 
-                    <li>
-                        Monitorización de eventos de seguridad y análisis de alertas en entornos cloud.
-                    </li>
+                    <div class="job-date">
 
-                    <li>
-                        Gestión de seguridad en Microsoft 365 y Azure con foco en phishing y hardening.
-                    </li>
-
-                    <li>
-                        Soporte en respuesta a incidentes y evaluación de riesgos operativos.
-                    </li>
-
-                </ul>
-
-            </article>
-
-            <article class="job">
-
-                <div class="job-top">
-
-                    <div>
-
-                        <h3 class="job-title">
-                            Consultora de Seguridad
-                        </h3>
-
-                        <span class="job-company">
-                            Avanade Spain S.L.U. · Málaga
-                        </span>
+                        Feb 2026 · Abr 2026
 
                     </div>
 
-                    <span class="job-date">
-                        Marzo 2025 — Septiembre 2025
-                    </span>
+                    <div>
+
+                        <h3>
+
+                            Analista de Ciberseguridad · Atlantica Sustainable Infrastructure
+
+                        </h3>
+
+                        <ul>
+
+                            <li>
+                                Monitorización de alertas y análisis
+                                de eventos de seguridad cloud.
+                            </li>
+
+                            <li>
+                                Hardening y seguridad en
+                                Microsoft 365 y Azure.
+                            </li>
+
+                            <li>
+                                Prevención de phishing y soporte
+                                a incident response.
+                            </li>
+
+                        </ul>
+
+                    </div>
 
                 </div>
 
-                <ul>
+                <div class="card job">
 
-                    <li>
-                        Gestión de identidades y accesos (IAM) en Azure.
-                    </li>
+                    <div class="job-date">
 
-                    <li>
-                        Implementación de políticas de seguridad y reducción de superficie de ataque.
-                    </li>
+                        Mar 2025 · Sep 2025
 
-                    <li>
-                        Documentación técnica y colaboración en equipos Agile.
-                    </li>
+                    </div>
 
-                </ul>
+                    <div>
 
-            </article>
+                        <h3>
+
+                            Analista de Ciberseguridad · Avanade Spain S.L.U.
+
+                        </h3>
+
+                        <ul>
+
+                            <li>
+                                Gestión de identidades y accesos (IAM) en Azure
+                            </li>
+
+                            <li>
+                                Apoyo en cumplimiento de políticas de seguridad 
+                                y reducción de superficie de ataque.
+                            </li>
+
+                            <li>
+                                Documentación técnica y colaboración con 
+                                equipos multidisciplinares en entornos ágiles.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- TECH -->
 
-<!-- SKILLS -->
+    <section id="stack">
 
-<section id="skills">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-subtitle">
-                03 · STACK
-            </span>
+        <div class="container">
 
             <h2 class="section-title">
-                Aptitudes Técnicas
+
+                Ecosistema tecnológico
+
             </h2>
 
         </div>
 
-        <div class="skills-grid">
+        <div class="carousel-wrapper">
 
-            <div class="skill-card">
+            <div class="carousel-track track-left">
 
-                <i class="fa-solid fa-brain"></i>
+                <div class="tech-card">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
 
-                <h3>
-                    IA & Datos
-                </h3>
+                <div class="tech-card">
+                    <i class="fas fa-database"></i>
+                    <span>Apache Spark</span>
+                </div>
 
-                <p>
-                    Python, Machine Learning, Spark, Scala, ETL, Pandas, Scikit-learn
-                </p>
+                <div class="tech-card">
+                    <i class="fas fa-code"></i>
+                    <span>Scala</span>
+                </div>
 
-            </div>
+                <div class="tech-card">
+                    <i class="fas fa-brain"></i>
+                    <span>Machine Learning</span>
+                </div>
 
-            <div class="skill-card">
+                <div class="tech-card">
+                    <i class="fab fa-microsoft"></i>
+                    <span>Azure</span>
+                </div>
 
-                <i class="fa-solid fa-cloud"></i>
+                <div class="tech-card">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>Cybersecurity</span>
+                </div>
 
-                <h3>
-                    Cloud
-                </h3>
+                <!-- DUPLICADOS -->
 
-                <p>
-                    Azure, Azure AD, IAM, Microsoft 365
-                </p>
+                <div class="tech-card">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
 
-            </div>
+                <div class="tech-card">
+                    <i class="fas fa-database"></i>
+                    <span>Apache Spark</span>
+                </div>
 
-            <div class="skill-card">
+                <div class="tech-card">
+                    <i class="fas fa-code"></i>
+                    <span>Scala</span>
+                </div>
 
-                <i class="fa-solid fa-shield-halved"></i>
-
-                <h3>
-                    Ciberseguridad
-                </h3>
-
-                <p>
-                    OWASP, hardening, análisis de vulnerabilidades
-                </p>
-
-            </div>
-
-            <div class="skill-card">
-
-                <i class="fa-solid fa-code"></i>
-
-                <h3>
-                    Desarrollo
-                </h3>
-
-                <p>
-                    Java, JavaScript, React Native, Git
-                </p>
+                <div class="tech-card">
+                    <i class="fas fa-brain"></i>
+                    <span>Machine Learning</span>
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- PROJECTS -->
 
-<!-- TECH STACK -->
+    <section id="projects">
 
-<section>
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-subtitle">
-                04 · TECNOLOGÍAS
-            </span>
+        <div class="container">
 
             <h2 class="section-title">
-                Tech Stack
+
+                Proyectos seleccionados
+
             </h2>
 
-        </div>
+            <div class="grid grid-2">
 
-        <div class="tech-stack">
+                <div class="card">
 
-            <div class="tech-item">Python</div>
-            <div class="tech-item">Apache Spark</div>
-            <div class="tech-item">Scala</div>
-            <div class="tech-item">ETL</div>
-            <div class="tech-item">Azure</div>
-            <div class="tech-item">Machine Learning</div>
-            <div class="tech-item">Generative AI</div>
-            <div class="tech-item">LLMs</div>
-            <div class="tech-item">Linux</div>
-            <div class="tech-item">Git</div>
-            <div class="tech-item">APIs</div>
-            <div class="tech-item">IAM</div>
+                    <div class="card-icon">
 
-        </div>
+                        <i class="fas fa-robot"></i>
 
-    </div>
+                    </div>
 
-</section>
+                    <h3>
 
-<!-- PROJECTS -->
+                        Fake News Detection AI
 
-<section id="proyectos">
+                    </h3>
 
-    <div class="container">
+                    <p>
 
-        <div class="section-header">
+                        Proyecto de inteligencia artificial enfocado
+                        en detección automática de fake news utilizando
+                        procesamiento de lenguaje natural y modelos
+                        de machine learning.
 
-            <span class="section-subtitle">
-                05 · PROYECTOS
-            </span>
+                    </p>
 
-            <h2 class="section-title">
-                Portfolio
-            </h2>
+                    <a href="https://github.com/ruizgardonpaula/fake-news-detection-project.git"
+                    target="_blank"
+                    class="project-link">
 
-        </div>
+                        Ver repositorio
+                        <i class="fas fa-arrow-right"></i>
 
-        <div class="projects">
+                    </a>
 
-            <article class="project">
+                </div>
 
-                <div class="project-top">
+                <div class="card">
 
-                    <h3 class="project-title">
+                    <div class="card-icon">
+
+                        <i class="fas fa-server"></i>
+
+                    </div>
+
+                    <h3>
+
                         Automatización de VMs
+
                     </h3>
 
+                    <p>
+
+                        Desarrollo de extensión para automatización
+                        del ciclo de vida de máquinas virtuales
+                        utilizando Libvirt y KVM/QEMU.
+
+                    </p>
+
+                    <a href="https://github.com/pauruigar6"
+                    target="_blank"
+                    class="project-link">
+
+                        Ver proyecto
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
+
                 </div>
 
-                <p class="project-desc">
+                <div class="card">
 
-                    Extensión integrable con Virt-Manager para automatización del ciclo de vida de máquinas virtuales utilizando Libvirt API y KVM/QEMU.
+                    <div class="card-icon">
 
-                </p>
+                        <i class="fas fa-mobile-screen"></i>
 
-                <div class="tags">
+                    </div>
 
-                    <span class="tag">Python</span>
-                    <span class="tag">KVM</span>
-                    <span class="tag">Libvirt</span>
+                    <h3>
+
+                        Whizzy Task Manager
+
+                    </h3>
+
+                    <p>
+
+                        Aplicación móvil colaborativa desarrollada
+                        con React Native y Expo orientada a
+                        productividad y gamificación.
+
+                    </p>
+
+                    <a href="https://github.com/pauruigar6/Whizzy"
+                    target="_blank"
+                    class="project-link">
+
+                        Ver proyecto
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
 
                 </div>
 
-                <a href="https://github.com/pauruigar6"
-                target="_blank"
-                class="project-link">
+                <div class="card">
 
-                    Ver proyecto
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="card-icon">
 
-                </a>
+                        <i class="fas fa-heart-pulse"></i>
 
-            </article>
+                    </div>
 
-            <article class="project">
+                    <h3>
 
-                <div class="project-top">
-
-                    <h3 class="project-title">
                         CareMonitor
+
                     </h3>
 
+                    <p>
+
+                        Plataforma eHealth para monitorización
+                        de pacientes y persistencia segura
+                        de datos clínicos en cloud.
+
+                    </p>
+
+                    <a href="https://github.com/pauruigar6/CareMonitor-IPe2"
+                    target="_blank"
+                    class="project-link">
+
+                        Ver proyecto
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
+
                 </div>
 
-                <p class="project-desc">
-
-                    Plataforma eHealth orientada a monitorización de pacientes y persistencia segura de información médica en la nube.
-
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">Cloud</span>
-
-                </div>
-
-                <a href="https://github.com/pauruigar6/CareMonitor-IPe2"
-                target="_blank"
-                class="project-link">
-
-                    Ver proyecto
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </article>
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- FOOTER -->
 
-<!-- EDUCATION -->
+    <footer>
 
-<section>
+        <div class="container">
 
-    <div class="container">
+            <h2>
 
-        <div class="section-header">
+                Construyendo
+                soluciones inteligentes
+                para el futuro.
 
-            <span class="section-subtitle">
-                06 · EDUCACIÓN
-            </span>
-
-            <h2 class="section-title">
-                Formación Académica
             </h2>
 
-        </div>
+            <p>
 
-        <div class="education">
-
-            <div class="edu-card">
-
-                <h3>
-                    Máster en Ciberseguridad e Inteligencia Artificial
-                </h3>
-
-                <p>
-                    CEI – Centro de Estudios e Innovación · 2025 — 2026
-                </p>
-
-            </div>
-
-            <div class="edu-card">
-
-                <h3>
-                    Ingeniería Informática
-                </h3>
-
-                <p>
-                    Universidad de Sevilla · 2021 — 2025
-                </p>
-
-            </div>
-
-            <div class="edu-card">
-
-                <h3>
-                    Erasmus+ International Exchange
-                </h3>
-
-                <p>
-                    Brno University of Technology · República Checa · 2023 — 2024
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- LANGUAGES -->
-
-<section>
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-subtitle">
-                07 · IDIOMAS
-            </span>
-
-            <h2 class="section-title">
-                Comunicación
-            </h2>
-
-        </div>
-
-        <div class="languages">
-
-            <div class="language">
-
-                <span>Español</span>
-                <span>Nativo</span>
-
-            </div>
-
-            <div class="language">
-
-                <span>Inglés</span>
-                <span>B2 · Cambridge FCE</span>
-
-            </div>
-
-            <div class="language">
-
-                <span>Alemán</span>
-                <span>A1/A2</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="container">
-
-        <div class="footer-box">
-
-            <h2 class="footer-title">
-                Construyendo IA,<br>
-                datos y sistemas escalables.
-            </h2>
-
-            <p class="footer-text">
-
-                Interesada en ingeniería de datos, IA generativa, automatización cloud y arquitecturas modernas orientadas a producción.
+                IA · Data Engineering · Cloud · Cybersecurity
 
             </p>
 
             <div class="footer-links">
 
                 <a href="mailto:ruizgardonpaula@gmail.com">
-                    Email
+                    <i class="fas fa-envelope"></i>
                 </a>
 
-                <a href="https://github.com/pauruigar6"
+                <a href="https://linkedin.com"
                 target="_blank">
-                    GitHub
+                    <i class="fab fa-linkedin"></i>
                 </a>
 
-                <a href="https://www.linkedin.com/in/paularuizgardon"
+                <a href="https://github.com/ruizgardonpaula"
                 target="_blank">
-                    LinkedIn
+                    <i class="fab fa-github"></i>
                 </a>
-
-            </div>
-
-            <div class="footer-bottom">
-
-                © 2026 Paula Ruiz · Sevilla, España
 
             </div>
 
         </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 </body>
+
 </html>
